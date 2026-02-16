@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>如何处理正弦和余弦 | 微积分入门</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 15}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>如何处理正弦和余弦</h1>
+<p class="a rotatedFloralHeartBullet">
+
+<p>希腊字母通常用来表示角度，我们将把字母 $\theta$ (“theta”) 作为任何可变角度的常用字母。
+
+<p>让我们考虑函数
+\[
+y= \sin \theta.
+\]
+
+<a name="figure3">
+<p><img src="33283-t/images/177a.pdf.png-1.png">
+
+<p>我们必须研究的是 $\dfrac{d(\sin \theta)}{d \theta}$ 的值； 或者，换句话说，如果角度 $\theta$ 发生变化，我们必须找到正弦的增量和角度的增量之间的关系，这两个增量本身都是无限小的。 检查<a href="#figure43">图 43</a>，其中，如果圆的半径为 1，则 $y$ 的高度为正弦，而 $\theta$ 为角度。 现在，如果 $\theta$
+
+假设通过向其添加小角度 $d \theta$（角度的元素）来增加，则 $y$ 的高度（即正弦）将增加一个小元素 $dy$。 新的高度 $y + dy$ 将是新角度 $\theta + d \theta$ 的正弦，或者将其表示为方程式，
+\[
+y+dy = \sin(\theta + d \theta);
+\]
+并从中减去第一个方程给出
+\[
+dy = \sin(\theta + d \theta)- \sin \theta.
+\]
+
+<p>右侧的数量是两个正弦之间的差值，三角学书籍告诉我们如何计算这个差值。 因为它们告诉我们，如果 $M$ 和 $N$ 是两个不同的角度，
+\[
+\sin M - \sin N = 2 \cos\frac{M+N}{2}·\sin\frac{M-N}{2}.
+\]
+
+<p>那么，如果我们将一个角度的 $M= \theta + d \theta$ 和另一个角度的 $N= \theta$ 代入，则可以写成
+\begin{align*}
+dy &= 2 \cos\frac{\theta + d\theta + \theta}{2}
+      · \sin\frac{\theta + d\theta - \theta}{2},\\
+
+\text{或，}\;
+
+dy &= 2\cos(\theta + \tfrac{1}{2}d\theta)
+     · \sin\tfrac{1}{2} d\theta.
+\end{align*}
+
+<p>但是，如果我们认为 $d \theta$ 无限小，那么在极限情况下，我们可以通过与 $\theta$ 比较来忽略 $\frac{1}{2} d \theta$，并且还可以将 $\sin\frac{1}{2} d \theta$ 视为与 $\frac{1}{2} d \theta$ 相同。 然后，该方程变为：<a name="differsin"/>
+\begin{align*}
+dy &= 2 \cos \theta × \tfrac{1}{2} d \theta; \\
+dy &= \cos \theta · d \theta, \\
+\text{并且，最后，}\;
+\dfrac{dy}{d \theta} &= \cos \theta.
+\end{align*}
+
+<p>随附的曲线，<a href="#figure44">图 44</a> 和 <a href="#figure45">图 45</a> 显示了按比例绘制的 $y=\sin \theta$ 和 $\dfrac{dy}{d\theta}=\cos\theta$ 对于 $\theta$ 的相应值的值。
+
+<a name="figure44">
+<p><img src="33283-t/images/179a.pdf.png-1.png"><a name="erratum2"/>
+<a name="figure45">
+<p><img src="33283-t/images/179b.pdf.png-1.png">
+<hr>
+
+
+<p>接下来取余弦。<a name="differcos"/>
+
+<p>令 $y=\cos \theta$。
+
+<p>现在 $\cos \theta=\sin\left(\dfrac{\pi}{2}-\theta\right)$。
+
+<p>因此
+\begin{align*}
+&\begin{aligned}
+dy = d\left(\sin\left(\frac{\pi}{2} - \theta\right)\right)
+  &= \cos\left(\frac{\pi}{2} - \theta\right) × d(-\theta), \\
+  &= \cos\left(\frac{\pi}{2} - \theta\right) × (-d\theta),
+\end{aligned} \\
+&\frac{dy}{d\theta} = -\cos\left(\frac{\pi}{2} - \theta\right).
+\end{align*}
+由此可见
+\begin{align*}
+&\frac{dy}{d\theta} = -\sin \theta.
+\end{align*}
+
+<p><hr>
+
+<p>最后，取正切。
+   令
+\begin{align*}
+y  &= \tan \theta, \\
+dy &= \tan(\theta + d\theta) - \tan\theta. \\
+\end{align*}
+按三角学书籍中的说明展开
+\begin{align*}
+
+\tan(\theta + d\theta)
+   &= \frac{\tan\theta + \tan d\theta}
+           {1 - \tan\theta·\tan d\theta}; \\
+ \text{因此}\;
+dy &= \frac{\tan\theta + \tan d\theta}
+           {1-\tan\theta·\tan d\theta} - \tan\theta \\
+   &= \frac{(1 + \tan^2\theta)\tan d\theta}
+           {1-\tan\theta·\tan d\theta}.
+\end{align*}
+
+
+<p>现在记住，如果 $d\theta$ 无限减小，则 $\tan d\theta$ 的值与 $d\theta$ 相同，并且与 1 相比，$\tan\theta · d\theta$ 可以忽略不计，因此表达式简化为
+\begin{align*}
+dy &= \frac{(1+\tan^2 \theta)\, d\theta}{1}, \\
+ \text{因此}\;
+\frac{dy}{d\theta} &= 1 + \tan^2\theta, \\
+ \text{或}\;
+\frac{dy}{d\theta} &= \sec^2 \theta.
+\end{align*}
+
+<p>收集这些结果，我们有：
+  <table>
+    <tr><th>$y$</th><th>$\dfrac{dy}{d\theta}$</th></tr>
+    <tr><td>$\sin\theta$</td><td>$\cos\theta$</td></tr>
+    <tr><td>$\cos\theta$</td><td>$-\sin\theta$</td></tr>
+    <tr><td>$\tan\theta$</td><td>$\sec^2\theta$</td></tr>
+  </table>
+
+
+<p>有时，在机械和物理问题中，例如，在简谐运动和波动运动中，我们必须处理与时间成正比增加的角度。 因此，如果 $T$ 是一个完整<em>周期</em>或绕圆移动的时间，那么由于圆周围的角度为 $2\pi$ 弧度或 $360°$，则在时间 $t$ 内移动的角度量将为
+\begin{align*}
+\theta &= 2\pi\frac{t}{T},\quad \text{以弧度表示，} \\
+\text{或}\;
+\theta &= 360\frac{t}{T},\quad \text{以度表示。}
+\end{align*}
+
+<p>如果<em>频率</em>或每秒周期数用 $n$ 表示，则 $n = \dfrac{1}{T}$，然后我们可以写成：
+\[
+\theta=2\pi nt.
+\]
+那么我们将有
+\[
+y = \sin 2\pi nt.
+\]
+
+<p>现在，如果我们想知道正弦如何随着时间变化，我们必须关于时间而不是关于 $\theta$ 进行微分。 为此，我们必须求助于<a href="9.html">第九章</a>中解释的技巧，并令
+\[
+\frac{dy}{dt} = \frac{dy}{d\theta} · \frac{d\theta}{dt}.
+\]
+
+<p>现在 $\dfrac{d\theta}{dt}$ 显然是 $2\pi n$；因此
+\begin{align*}
+\frac{dy}{dt} &= \cos \theta × 2\pi n \\
+              &= 2\pi n · \cos 2\pi nt. \\
+\end{align*}
+ 类似地，得出
+\begin{align*}
+\frac{d(\cos 2\pi nt)}{dt} &= -2\pi n · \sin 2\pi nt.
+\end{align*}
+
+<p>
+<h2>正弦或余弦的二阶微分系数</h2>
+
+<p>我们已经看到，当 $\sin \theta$ 关于 $\theta$ 微分时，它变为 $\cos \theta$； 当 $\cos \theta$ 关于 $\theta$ 微分时，它变为 $-\sin \theta$； 或者，用符号表示，
+\[
+\frac{d^2(\sin \theta)}{d\theta^2} = -\sin \theta.
+\]
+
+<p>因此，我们得到了一个奇怪的结果，即我们发现了一个函数，如果我们将其微分两次，我们将得到我们开始的相同函数，但是符号从 $+$ 更改为 $-$。
+
+<p>余弦的情况也是如此； 因为对 $\cos\theta$ 求导得到 $-\sin\theta$，对 $-\sin\theta$ 求导得到 $-\cos\theta$； 或者这样：
+\[
+\frac{d^2(\cos\theta)}{d\theta^2} = -\cos\theta.
+\]
+
+<p><em>正弦和余弦是唯一二阶微分系数等于（且与原始函数符号相反）的函数。</em>
+
+<p><hr>
+
+<p><em>示例</em><a name="intex3"/>
+凭借我们迄今为止学到的知识，我们现在可以区分更复杂的表达式。
+
+<p>(1) $y=\arcsin x$。
+
+<p>如果 $y$ 是正弦为 $x$ 的弧，则 $x = \sin y$。
+\[
+\frac{dx}{dy}=\cos y.
+\]
+
+<p>现在从反函数传递到原始函数，我们得到
+\begin{align*}
+\frac{dy}{dx}
+  &= \frac{1}{\;\dfrac{dx}{dy}\;} = \frac{1}{\cos y}. \\
+   \text{现在}\;
+\cos y
+  &= \sqrt{1-\sin^2 y}=\sqrt{1-x^2}; \\
+ \text{因此}\;
+\frac{dy}{dx}
+  &= \frac{1}{\sqrt{1-x^2}},
+\end{align*}
+这是一个相当出乎意料的结果。
+
+<p>(2) $y=\cos^3 \theta$。
+
+<p>这与 $y=(\cos \theta)^3$ 相同。
+
+<p>令 $\cos\theta=v$； 则 $y=v^3$； $\dfrac{dy}{dv}=3v^2$。
+\begin{align*}
+\frac{dv}{d\theta} &= -\sin\theta.\\
+\frac{dy}{d\theta} &=  \frac{dy}{dv} × \frac{dv}{d\theta}
+                    = -3 \cos^2 \theta \sin\theta.
+\end{align*}
+
+<p>(3) $y=\sin(x+a)$。
+
+<p>令 $x+a=v$； 则 $y=\sin v$。
+\[
+\frac{dy}{dv}=\cos v;\qquad
+\frac{dv}{dx}=1 \quad\text{且}\quad
+\frac{dy}{dx}=\cos(x+a).
+\]
+
+<p>(4) $y=\log_\epsilon \sin \theta$。
+
+<p>令 $\sin\theta=v$； $y=\log_\epsilon v$。
+\begin{align*}
+\frac{dy}{dv}      &= \frac{1}{v};\quad \frac{dv}{d\theta}=\cos\theta;\\
+\frac{dy}{d\theta} &= \frac{1}{\sin\theta} × \cos\theta = \cot\theta.
+\end{align*}
+
+<p>(5) $y=\cot\theta=\dfrac{\cos\theta}{\sin\theta}$。
+\begin{align*}
+\frac{dy}{d\theta}
+  &= \frac{-\sin^2\theta - \cos^2 \theta}{\sin^2 \theta}\\
+  &= -(1+\cot^2 \theta) = -\text{cosec}^2 \theta.
+\end{align*}
+
+<p>(6) $y=\tan 3\theta$。
+
+<p>令 $3\theta=v$； $y=\tan v$； $\dfrac{dy}{dv}=\sec^2 v$。
+\[
+\frac{dv}{d\theta}=3;\quad
+\frac{dy}{d\theta}=3 \sec^2 3\theta.
+\]
+
+<p>(7) $y = \sqrt{1+3\tan^2\theta}$； $y=(1+3 \tan^2 \theta)^{\frac{1}{2}}$。
+
+<p>令 $3\tan^2\theta=v$。
+\begin{align*}
+y &= (1+v)^{\frac{1}{2}};\quad
+\frac{dy}{dv} = \frac{1}{2\sqrt{1+v}}
+\end{align*}
+(参见<a href="9.html#ExNo1">此处</a>);
+\begin{align*}
+\frac{dv}{d\theta}
+  &= 6\tan\theta \sec^2 \theta \\
+\end{align*}
+因为，如果 $\tan \theta = u$，
+\begin{align*}
+v &= 3u^2;\quad \frac{dv}{du} = 6u;\quad \frac{du}{d\theta} = \sec^2 \theta; \\
+
+ 因此
+\frac{dv}{d\theta}
+  &= 6 (\tan \theta \sec^2 \theta) \\
+ 因此
+
+\frac{dy}{d\theta}
+  &= \frac{6\tan\theta \sec^2\theta}{2\sqrt{1 + 3\tan^2\theta}}.
+\end{align*}
+
+<p>(8) $y=\sin x \cos x$。<a name="example1"/>
+\begin{align*}
+\frac{dy}{dx}
+  &= \sin x(-\sin x) + \cos x × \cos x \\
+  &= \cos^2 x - \sin^2 x.
+\end{align*}
+
+<p>
+<hr><h3>练习 XIV</h3>
+
+(1) 微分以下各项：
+\begin{align*}
+\text{(i)}\quad   y &= A \sin\left(\theta - \frac{\pi}{2}\right).\\
+\text{(ii)}\quad  y &= \sin^2 \theta;\quad \text{和 } y = \sin 2\theta.\\
+\text{(iii)}\quad y &= \sin^3 \theta;\quad \text{和 } y = \sin 3\theta.
+\end{align*}
+
+<p>(2) 找出 $\sin\theta × \cos\theta$ 为最大值时的 $\theta$ 值。
+
+<p>(3) 微分 $y=\dfrac{1}{2\pi} \cos 2\pi nt$。
+
+<p>(4) 如果 $y = \sin a^x$，则求 $\dfrac{dy}{dx}$。
+
+<p>(5) 微分 $y=\log_\epsilon \cos x$。
+
+<p>(6) 微分 $y=18.2 \sin(x+26°)$。
+
+<p>(7) 绘制曲线 $y=100 \sin(\theta-15°)$； 并证明曲线在 $\theta = 75°$ 处的斜率是最大斜率的一半。
+
+<p>(8) 如果 $y=\sin \theta·\sin 2\theta$，则求 $\dfrac{dy}{d\theta}$。
+
+<p>(9)  如果 $y=a·\tan^m(\theta^n)$，则求 $y$ 关于 $\theta$ 的微分系数。
+
+<p>(10) 微分 $y=\epsilon^x \sin^2 x$。
+
+<p>(11) 微分练习 XIII 的三个方程式。( <a href="14b.html">此处</a> )，第 4 题，并比较它们的微分系数，看看它们是否相等，或者在 $x$ 的值非常小或非常大时，或者在 $x=30$ 附近的值时近似相等。
+
+<p>(12) 微分以下各项：
+\begin{align*}
+\text{(i)}\quad   y &= \sec x.    \\
+\text{(ii)}\quad  y &= \arccos x. \\
+\text{(iii)}\quad y &= \arctan x. \\
+\text{(iv)}\quad  y &= \text{arcsec} x. \\
+\text{(v)}\quad   y &= \tan x × \sqrt{3 \sec x}. &&
+\end{align*}
+
+<p>(13) 微分 $y=\sin(2\theta +3)^{2.3}$。
+
+<p>(14) 微分 $y=\theta^3+3 \sin(\theta+3)-3^{\sin \theta} - 3^\theta$。
+
+<p>(15) 求 $y=\theta \cos \theta$ 的最大值或最小值。
+
+<p><h3 class="answers">答案</h3>
+
+<p>(1)  (i) $\dfrac{dy}{d\theta} = A \cos \left( \theta - \dfrac{\pi}{2} \right)$；
+
+<p>(ii) $\dfrac{dy}{d\theta} = 2\sin\theta \cos\theta = \sin2\theta$ 和 $\dfrac{dy}{d\theta} = 2\cos2\theta$；
+<p>(iii) $\dfrac{dy}{d\theta} = 3\sin^2 \theta \cos\theta$ 和 $\dfrac{dy}{d\theta} = 3\cos3\theta$。
+<p>(2)   $\theta = 45°$ 或 $\dfrac{\pi}{4}$ 弧度。
+<p>(3)   $\dfrac{dy}{dt} = -n \sin 2\pi nt$。
+<p>(4)   $a^x \log_\epsilon a \cos a^x$。
+<p>(5)   $\dfrac{\cos x}{\sin x} = \text{余切}\; x$
+<p>(6)   $18.2 \cos \left(x + 26° \right)$。
+<p>(7)  斜率为 $\dfrac{dy}{d\theta} = 100\cos\left(\theta - 15° \right)$，当 $(\theta -15°) = 0$ 或 $\theta = 15°$ 时，斜率最大；此时斜率的值为 $100$。当 $\theta = 75°$ 时，斜率为 $100\cos(75°  - 15°) = 100\cos 60° = 100 × \frac{1}{2} = 50$。
+<p>(8)  $\begin{aligned}[t]
+  \cos\theta \sin2\theta + 2\cos2\theta \sin\theta
+  &= 2\sin\theta\left(\cos^2 \theta + \cos2\theta\right) \\
+  &= 2\sin\theta\left(3\cos^2 \theta - 1\right).
+  \end{aligned}$
+
+<p>(9)  $amn\theta^{n-1} \tan^{m-1}\left(\theta^n\right)\sec^2 \theta^n$。
+<p>(10)  $\epsilon^x \left(\sin^2 x + \sin2x\right)$；&nbsp;&nbsp; $\epsilon^x \left(\sin^2 x + 2\sin2x + 2\cos2x\right)$。
+<p>(11)  $\left(i\right) \dfrac{dy}{dx} = \dfrac{ab}{\left(x + b\right)^2}$；&nbsp;&nbsp;
+(ii) $\dfrac{a}{b} \epsilon^{-\frac{x}{b}}$；&nbsp;&nbsp;
+(iii) $\dfrac{1}{90}° × \dfrac{ab}{\left(b^2 + x^2\right)}$。
+
+<p>(12)  (i) $\dfrac{dy}{dx} = \sec x \tan x$；
+
+(ii) $\dfrac{dy}{dx} = - \dfrac{1}{\sqrt{ 1 - x^2}}$；
+
+(iii) $\dfrac{dy}{dx} = \dfrac{1}{ 1 + x^2}$；
+
+(iv) $\dfrac{dy}{dx} = \dfrac{1}{x \sqrt{ x^2 - 1}}$；
+
+(v) $\dfrac{dy}{dx} = \dfrac{\sqrt{ 3\sec x} \left(3\sec^2 x - 1\right)}{2}$。
+
+<p>(13)  $\dfrac{dy}{d\theta} = 4.6\left(2\theta + 3\right)^{1.3} \cos\left(2\theta + 3\right)^{2.3}$。
+
+<p>(14)   $\dfrac{dy}{d\theta} = 3\theta^2 + 3\cos \left( \theta + 3 \right) - \log_\epsilon 3 \left( \cos\theta × 3^{\sin\theta} + 3\theta \right)$。
+
+<p>(15)   $\theta = \cot\theta$；$\theta = ±0.86$； 对于 $+\theta$ 是最大值，对于 $-\theta$ 是最小值。
+
+<br>
+<hr>
+<a href="16.html">下一页 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>积分作为微分的逆运算 | 微积分入门</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 18}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>积分作为微分的逆运算</h1>
+<p class="a rotatedFloralHeartBullet">
+<p>微分是当 $y$（作为 $x$ 的函数）给定时，我们可以找到 $\dfrac{dy}{dx}$ 的过程。
+
+<p><a name="revdif"/>
+像任何其他数学运算一样，微分的过程也可以反过来；因此，如果对 $y = x^4$ 求微分得到 $\dfrac{dy}{dx} = 4x^3$；如果从 $\dfrac{dy}{dx} = 4x^3$ 开始，则会说反向运算将产生 $y = x^4$。 但是这里出现了一个奇怪的问题。 如果我们从以下<em>任何一个</em>开始，我们都应该得到 $\dfrac{dy}{dx} = 4x^3$：$x^4$ 或 $x^4 + a$ 或 $x^4 + c$，或者 $x^4$ 加上<em>任何</em>常数。 因此，很明显，在从 $\dfrac{dy}{dx}$ 反向计算到 $y$ 时，必须为可能存在的附加常数做出规定，该常数的值将是不确定的，
+
+直到以某种其他方式确定。 因此，如果对 $x^n$ 求导得到 $nx^{n-1}$，则从 $\dfrac{dy}{dx} = nx^{n-1}$ 反向计算将得到 $y = x^n + C$；其中 $C$ 代表尚未确定的可能常数。
+
+<p>显然，在处理 $x$ 的幂时，反向计算的规则将是：将幂加 1，然后除以该加大的幂，并加上不确定的常数。
+
+<p>因此，在
+\[
+\frac{dy}{dx} = x^n,
+\]
+的情况下，反向计算得到
+\[
+y = \frac{1}{n + 1} x^{n+1} + C.
+\]
+
+<p>如果对等式 $y = ax^n$ 求导，得到
+\[
+\frac{dy}{dx} = anx^{n-1},
+\]
+很明显，从
+\[
+\frac{dy}{dx} = anx^{n-1},
+\]
+开始，反向计算将得到
+\[
+y = ax^n.
+\]
+因此，当我们处理乘法常数时，我们必须简单地将该常数作为积分结果的乘数。
+
+<p>因此，如果 $\dfrac{dy}{dx} = 4x^2$，则反向过程给我们 $y = \frac{4}{3}x^3$。
+
+<p>但这并不完整。 因为我们必须记住，如果我们从
+\[
+y = ax^n + C,
+\]
+开始，其中 $C$ 是任何常数，我们也会同样发现
+\[
+\frac{dy}{dx} = anx^{n-1}.
+\]
+
+<p>因此，当我们反向计算时，我们必须始终记住添加这个未确定的常数，即使我们还不知道它的值是多少。
+
+<p>这个过程，是微分的反向过程，称为<em>积分</em>；因为它包括在只给出 $dy$ 或 $\dfrac{dy}{dx}$ 的表达式时，找出整个量 $y$ 的值。 到目前为止，我们尽可能地将 $dy$ 和 $dx$ 一起作为微分系数：今后我们将更经常地将它们分开。
+
+<p>如果我们从一个简单的例子开始，
+\[
+\frac{dy}{dx} = x^2.
+\]
+
+<p>如果我们愿意，我们可以把它写成
+\[
+dy = x^2\, dx.
+\]
+
+<p>现在这是一个 “微分方程”，它告诉我们 $y$ 的一个元素等于相应的 $x$ 的元素乘以 $x^2$。 现在，我们想要的是积分； 因此，用适当的符号写下对两边进行积分的指令，如下所示：
+\[
+\int dy = \int x^2\, dx.
+\]
+
+<p>[关于读取积分的说明：以上内容应按以下方式阅读：
+“<em>积分 dee-wy</em> 等于<em>积分 eks-平方 dee-eks</em>。”]
+
+<p>我们还没有积分：我们只是写下了积分的指令——如果我们能做到的话。 让我们试试看。 很多其他傻瓜都能做到——为什么我们不能？ 左边很简单。 所有 $y$ 的部分的总和与 $y$ 本身相同。 因此，我们可以立即写下：
+\[
+y = \int x^2\, dx.
+\]
+
+<p>但是，当我们到达方程的右侧时，我们必须记住，我们要加在一起的不是所有 $dx$，而是所有诸如 $x^2\, dx$ 的项；并且这将与 $x^2 \int dx$ 不同，因为 $x^2$ 不是一个常数。 因为某些 $dx$ 将乘以较大的 $x^2$ 值，而某些将乘以较小的 $x^2$ 值，具体取决于 $x$ 的值。 因此，我们必须认真思考一下我们对积分是微分逆运算的了解。 现在，我们用于此反向过程的规则——请参见<a href="18.html#revdif">此处</a><em>前文</em>——在处理 $x^n$ 时是“将幂加一，然后<a name="diffrule"/>除以与该加大的幂相同的数字”。
+
+也就是说，$x^2\, dx$ 将更改为 $\frac{1}{3} x^3$。 将其放入方程中；但不要忘记在末尾添加“积分常数” $C$。因此我们得到：
+\[
+y = \tfrac{1}{3} x^3 + C.
+\]
+
+<p>你已经实际执行了积分。 多么容易！
+<p><note>*你可能会问，末尾的小 $dx$ 怎么了？
+ 好吧，请记住它实际上是微分系数的一部分，当转换为右侧时（如在 $x^2\, dx$ 中），它提醒 $x$ 是独立变量，必须相对于它执行运算； 并且，由于对乘积求和，因此 $x$ 的幂增加了 <em>1</em>。 你很快就会熟悉这一切的。</note>
+<p>让我们尝试另一个简单的例子。
+
+<p>\begin{align*}
+   令
+\dfrac{dy}{dx} &= ax^{12},
+\end{align*}
+其中 $a$ 是任意常数乘数。 好吧，我们发现当微分时（请参阅<a href="5.html#differ">此处</a>），$y$ 值中的任何常数因子都将以不变的形式重新出现在 $\dfrac{dy}{dx}$ 的值中。 因此，在反向的积分过程中，它也将以不变的形式重新出现在 $y$ 的值中。 因此，我们可以像以前一样开始工作，如下所示
+\begin{align*}
+dy &= ax^{12} · dx,\\
+\int dy &= \int ax^{12} · dx,\\
+\int dy &= a \int x^{12}\, dx,\\
+y &= a × \tfrac{1}{13} x^{13} + C.
+\end{align*}
+
+<p>就这样完成了。 多么容易！
+
+<p>我们现在开始意识到，与微分相比，积分是<em>寻找回去的路</em>的过程。 如果在微分过程中，我们曾经发现任何特定的表达式（在本例中为 $ax^{12}$），我们可以从它推导出 $y$。 这两个过程之间的对比可以通过一位著名老师的以下评论来说明。 如果将一个陌生人放在特拉法加广场，并告诉他找到前往尤斯顿车站的路，他可能会发现这项任务毫无希望。 但是，如果他之前曾被亲自从尤斯顿车站带到特拉法加广场，那么他找到返回尤斯顿车站的路就相对容易了。
+
+<p><h2>两个函数的和或差的积分</h2>
+
+<p>\begin{align*}
+   \text{令 }
+\frac{dy}{dx} &= x^2 + x^3, \\
+ \text{那么 }
+dy &= x^2\, dx + x^3\, dx.
+\end{align*}
+
+<p>我们没有理由不分别对每一项进行积分：因为，正如在<a href="6.html#sumdiffer">此处</a>中所见，我们发现，当我们微分两个单独的函数的和时，微分系数只是两个单独的微分的和。 因此，当我们反向计算（即积分）时，积分将只是两个单独积分的和。
+
+<p>那么我们的指令是：
+\begin{align*}
+\int dy
+  &= \int (x^2 + x^3)\, dx \\
+  &= \int x^2\, dx + \int x^3\, dx   \\
+y &= \tfrac{1}{3} x^3 + \tfrac{1}{4} x^4 + C.
+\end{align*}
+
+<p>如果其中任何一项是负数，则积分中的相应项也将是负数。 因此，差与和一样容易处理。
+
+<p><h2>如何处理常数项</h2>
+
+<p>假设在要积分的表达式中有一个常数项——例如：
+\[
+\frac{dy}{dx} = x^n + b.
+\]
+
+<p>这很容易解决。 因为你只需要记住，当你微分表达式 $y = ax$ 时，结果是 $\dfrac{dy}{dx} = a$。 因此，当您反向计算并积分时，常数将重新出现并乘以 $x$。因此我们得到
+\begin{align*}
+dy &= x^n\, dx + b · dx,  \\
+\int dy &= \int x^n\, dx + \int b\, dx, \\
+y &= \frac{1}{n+1} x^{n+1} + bx + C.
+\end{align*}
+
+<p>这里有很多例子可以让你尝试新获得的技能。
+
+<p><hr>
+
+<p>
+<p><em>示例</em>
+<p>(1) 给定 $\dfrac{dy}{dx} = 24x^{11}$。 求 $y$。<p> <em>答案</em> 。 $y = 2x^{12} + C$。
+
+<p>(2) 求 $\int (a + b)(x + 1)\, dx$。<p> 它是 $(a + b) \int (x + 1)\, dx$
+或 $(a + b) \left[\int x\, dx + \int dx\right]$ 或 $(a + b) \left(\dfrac{x^2}{2} + x\right) + C$。
+
+<p>(3) 给定 $\dfrac{du}{dt} = gt^{\frac{1}{2}}$。 求 $u$。<p> <em>答案</em> 。 $u = \frac{2}{3} gt^{\frac{3}{2}} + C$。
+
+<p>(4) $\dfrac{dy}{dx} = x^3 - x^2 + x$。 求 $y$。
+\begin{align*}
+dy &= (x^3 - x^2 + x)\, dx\quad\text{或} \\
+dy &= x^3\, dx - x^2\, dx + x\, dx;\quad
+y = \int x^3\, dx - \int x^2\, dx + \int x\, dx;
+\end{align*}
+ 且
+\begin{align*}
+
+y &= \tfrac{1}{4} x^4 - \tfrac{1}{3} x^3 + \tfrac{1}{2} x^2 + C.
+\end{align*}
+
+<p>(5) 积分 $9.75x^{2.25}\, dx$。<p> <em>答案</em> 。 $y = 3x^{3.25} + C$。
+
+<p><hr>
+
+<p>所有这些都足够容易。 让我们尝试另一个例子。
+
+<p>\begin{align*}
+ 令
+\dfrac{dy}{dx} &= ax^{-1}.
+\end{align*}
+
+<p>和以前一样，我们将写成
+\[
+dy = a x^{-1} · dx,\quad \int dy = a \int x^{-1}\, dx.
+\]
+
+<p>嗯，但是 $x^{-1}\, dx$ 的积分是什么？
+
+<p>如果你回顾一下对 $x^2$、$x^3$ 和 $x^n$ 等求微分的结果，你会发现我们从未从它们中的任何一个得到 $x^{-1}$ 作为 $\dfrac{dy}{dx}$ 的值。 我们从 $x^3$ 得到 $3x^2$； 我们从 $x^2$ 得到 $2x$； 我们从 $x^1$（即从 $x$ 本身）得到 $1$；但我们没有从 $x^0$ 得到 $x^{-1}$，这有两个很好的理由。 <em>首先</em>，$x^0$ 只是 $= 1$，是一个常数，并且不能具有微分系数。 <em>其次</em>，即使可以微分，它的微分系数（通过盲目地遵循通常的规则得到）也会是 $0 × x^{-1}$，并且乘以零会使其值为零！ 因此，当我们现在尝试积分 $x^{-1}\, dx$ 时，我们发现它在由以下规则给出的 $x$ 的幂中的任何地方都没有出现：
+\[
+\int x^n\, dx = \dfrac{1}{n+1} x^{n+1}.
+\]
+这是一个特殊情况。
+
+<p>好吧；但请再试一次。 浏览一下从各种 $x$ 函数中获得的各种微分，并尝试在其中找到 $x^{-1}$。 充分的搜索会表明，我们实际上确实获得了 $\dfrac{dy}{dx} = x^{-1}$ 作为对函数 $y = \log_\epsilon x$ 求微分的结果（参见<a href="14.html#differlog">此处</a>）。
+
+<p>那么，当然，既然我们知道对 $\log_\epsilon x$ 求微分会得到 $x^{-1}$，我们知道，通过反向计算，对 $dy = x^{-1}\, dx$ 积分将得到 $y = \log_\epsilon x$。 但是我们不能忘记给出的常数因子 $a$，也不能省略添加不确定的积分常数。 因此，这为我们提供了当前问题的解，
+\[
+y = a \log_\epsilon x + C.
+\]
+
+<p><em>注意</em>——此处请注意这个非常显着的事实，即如果我们碰巧不知道相应的微分，我们在上面的情况下就无法积分。 如果没有人发现对 $\log_\epsilon x$ 求微分会得到 $x^{-1}$，那么我们将完全被如何积分 $x^{-1}\, dx$ 的问题所困扰。 实际上，应该坦率地承认，这是积分微积分的奇特特征之一：——你在其他表达式的微分的逆运算得到你想积分的表达式之前，你无法积分任何东西。 即使在今天，也没有人能够找到表达式
+\[
+\frac{dy}{dx} = a^{-x^2},
+\]
+的通用积分，因为 $a^{-x^2}$ 尚未发现是由任何其他东西微分得出的。
+
+<p>
+<em>另一个简单的例子。</em><p>
+求 $\int (x + 1)(x + 2)\, dx$。
+
+<p>在查看要积分的函数时，你会发现它是 $x$ 的两个不同函数的乘积。 你可以，你认为，单独积分 $(x + 1)\, dx$，或者单独积分 $(x + 2)\, dx$。 当然可以。 但是如何处理乘积呢？ 你学到的微分中没有任何一个为你提供了像这样的乘积的微分系数。 如果没有这样的结果，最简单的方法是将两个函数相乘，然后进行积分。 这给了我们
+\[
+\int (x^2 + 3x + 2)\, dx.
+\]
+这与
+\[
+\int x^2\, dx + \int 3x\, dx + \int 2\, dx.
+\]
+相同。 执行积分，我们得到
+\[
+\tfrac{1}{3} x^3 + \tfrac{3}{2} x^2 + 2x + C.
+\]
+
+<p>
+  <h2>一些其他积分</h2>
+
+<p>现在，既然我们知道积分是微分的逆运算，我们可以立即查看我们已经知道的微分系数，并从它们中查看这些系数是从什么函数导出的。 这为我们提供了以下现成的积分：<a name="intex2"/><a name="differ3"/><a name="cosax"/>
+
+\begin{alignat*}{4}
+&x^{-1} &&\qquad &&
+  \int x^{-1}\, dx      &&= \log_\epsilon x + C. \\
+
+%\label{intex2}
+&\frac{1}{x+a} &&  &&
+  \int \frac{1}{x+a}\, dx &&= \log_\epsilon (x+a) + C. \\
+
+&\epsilon^x &&  &&
+  \int \epsilon^x\, dx    &&= \epsilon ^x + C. \\
+
+&\epsilon^{-x} &&&&
+  \int \epsilon^{-x}\, dx &&= -\epsilon^{-x} + C \\
+
+\end{alignat*}
+（因为如果 $y = - \dfrac{1}{\epsilon^x}$，$\dfrac{dy}{dx} = -\dfrac{\epsilon^x × 0 - 1 × \epsilon^x}{\epsilon^{2x}} = \epsilon^{-x}$）。
+\begin{alignat*}{4}
+
+&\sin x &&  &&
+  \int \sin x\, dx        &&= -\cos x + C. \\
+
+&\cos x && &&
+  \int \cos x\, dx        &&= \sin x + C. \\
+
+\end{alignat*}
+ 我们也可以推导出以下内容：
+\begin{alignat*}{4}
+
+&\log_\epsilon x; &&&&
+  \int\log_\epsilon x\, dx &&= x(\log_\epsilon x - 1) + C \\
+
+\end{alignat*}
+（因为如果 $y = x \log_\epsilon x - x$，$\dfrac{dy}{dx} = \dfrac{x}{x} + \log_\epsilon x - 1 = \log_\epsilon x$）。
+\begin{alignat*}{4}
+
+&\log_{10} x;   &&&&
+  \int\log_{10} x\, dx &&= 0.4343x (\log_\epsilon x - 1) + C. \\
+
+&a^x &&  &&
+  \int a^x\, dx        &&= \dfrac{a^x}{\log_\epsilon a} + C. \\
+
+% \label{cosax}
+&\cos ax; &&&& \int\cos ax\, dx     &&= \frac{1}{a} \sin ax + C \\
+\end{alignat*}
+（因为如果 $y = \sin ax$，$\dfrac{dy}{dx} = a \cos ax$；因此要得到 $\cos ax$，必须微分 $y = \dfrac{1}{a} \sin ax$）。
+\begin{alignat*}{4}
+
+&\sin ax; &&&& \int\sin ax\, dx     &&= -\frac{1}{a} \cos ax + C. \\
+\end{alignat*}
+
+<p>也可以尝试 $\cos^2\theta$；一个小技巧会简化问题：
+\[
+\cos 2\theta = \cos^2\theta - \sin^2\theta
+             = 2\cos^2 \theta - 1; \\
+\]
+ 因此
+\[
+\cos^2\theta = \tfrac{1}{2}(\cos 2\theta + 1),
+\]
+并且
+\begin{align*}
+
+\int\cos^2 \theta\, d\theta
+  &= \tfrac{1}{2} \int (\cos 2\theta + 1)\, d\theta \\
+  &= \tfrac{1}{2} \int \cos 2 \theta\, d\theta + \tfrac{1}{2} \int d\theta. \\
+  &= \frac{\sin 2\theta}{4} + \frac{\theta}{2} + C.
+\end{align*}
+<p>（另见<a href="20.html#moreexamples">此处</a>）
+<p>
+另见<a href="table.html">标准形式表</a>。
+你应该自己制作一个这样的表，只放入你成功微分和积分的通用函数。 请注意，它会稳步增长！
+
+<p>
+  <h2>关于二重积分和三重积分</h2>
+
+<p>在许多情况下，有必要对其中包含的两个或多个变量的某些表达式进行积分；在那种情况下，积分符号会多次出现。因此
+\[
+\iint f(x,y,)\, dx\, dy
+\]
+表示必须对每个变量 $x$ 和 $y$ 的某个函数进行积分。 完成的顺序并不重要。 因此，取函数 $x^2 + y^2$。 关于 $x$ 积分得到：
+\[
+\int (x^2+y^2)\, dx = \tfrac{1}{3} x^3 + xy^2.
+\]
+
+<p>现在，关于 $y$ 对此进行积分：
+\[
+\int (\tfrac{1}{3} x^3 + xy^2)\, dy = \tfrac{1}{3} x^3y + \tfrac{1}{3} xy^3,
+\]
+当然，要加上一个常数。 如果我们颠倒运算顺序，结果将相同。
+
+<p>在处理表面积和实体时，我们经常必须对长度和宽度进行积分，从而得到形式为
+\[
+\iint u · dx\, dy,
+\]
+的积分，其中 $u$ 是在每个点都取决于 $x$ 和 $y$ 的某种属性。 这将被称为<em>面积分</em>。 它表示所有此类
+
+元素如 $u · dx · dy$ 的值（也就是说，长 $dx$ 宽 $dy$ 的小矩形上 $u$ 的值）必须在整个长度和整个宽度上求和。
+
+<p>同样在处理三维的实体时。 考虑任何体积元素，小立方体的尺寸为 $dx$ $dy$ $dz$。 如果实体的形状由函数 $f(x, y, z)$ 表示，则整个固体将具有<em>体积分</em>
+\[
+\text{体积} = \iiint f(x,y,z) · dx · dy · dz.
+\]
+当然，此类积分必须在每个维度中的适当限制之间进行（有关极限之间的积分，请参阅<a href="19.html#limits">此处</a>）；并且积分无法执行，除非知道表面的边界在什么程度上取决于 $x$、$y$ 和 $z$。 如果 $x$ 的极限是从 $x_1$ 到 $x_2$，$y$ 的极限是从 $y_1$ 到 $y_2$，$z$ 的极限是从 $z_1$ 到 $z_2$，那么我们很清楚地知道
+\[
+\text{体积} = \int_{z1}^{z2} \int_{y1}^{y2} \int_{x1}^{x2} f(x,y,z) · dx · dy · dz.
+\]
+
+<p>当然，有很多复杂且困难的情况； 但是，一般来说，很容易看到符号的含义，其中这些符号旨在表示必须在给定表面上或在给定固体空间中执行某个积分。
+
+<p>
+<hr><h3>练习 XVII</h3>
+
+(1) 当 $y^2 = 4 ax$ 时求 $\int y\, dx$。
+
+<p>
+(2) 求 $\int \frac{3}{x^4}\, dx$。
+<p>(3) 求 $\int \frac{1}{a} x^3\, dx$。
+
+<p>
+(4) 求 $\int (x^2 + a)\, dx$。
+<p>(5) 积分 $5x^{-\frac{7}{2}}$。
+
+<p>
+(6) 求 $\int (4x^3 + 3x^2 + 2x + 1)\, dx$。
+
+<p>(7) 如果 $\dfrac{dy}{dx} = \dfrac{ax}{2} + \dfrac{bx^2}{3} + \dfrac{cx^3}{4}$； 求 $y$。
+
+<p>
+(8) 求 $\int \left(\frac{x^2 + a}{x + a}\right) dx$。
+<p>(9)  求 $\int (x + 3)^3\, dx$。
+
+<p>
+(10) 求 $\int (x + 2)(x - a)\, dx$。
+
+<p>(11) 求 $\int (\sqrt x + \sqrt[3] x) 3a^2\, dx$。
+
+<p>(12) 求 $\int (\sin \theta - \tfrac{1}{2})\, \frac{d\theta}{3}$。
+
+<p>
+(13) 求 $\int \cos^2 a \theta\, d\theta$。
+<p>(14) 求 $\int \sin^2 \theta\, d\theta$。
+
+<p>
+(15) 求 $\int \sin^2 a \theta\, d\theta$。
+<p>(16) 求 $\int \epsilon^{3x}\, dx$。
+
+<p>
+(17) 求 $\int \dfrac{dx}{1 + x}$。
+<p>(18) 求 $\int \dfrac{dx}{1 - x}$。
+
+<p><h3 class="answers">答案</h3>
+
+<p>(1)   $\dfrac{4\sqrt{a} x^{\frac{3}{2}}}{3} + C$。
+
+<p>(2)  $-\dfrac{1}{x^3} + C$。
+
+<p>(3)  $\dfrac{x^4}{4a} + C$。
+
+<p>(4)  $\tfrac{1}{3} x^3 + ax + C$。
+
+<p>(5)  $-2x^{-\frac{5}{2}} + C$。
+
+<p>(6)  $x^4 + x^3 + x^2 + x + C$。
+
+<p>(7)  $\dfrac{ax^2}{4} + \dfrac{bx^3}{9} + \dfrac{cx^4}{16} + C$。
+
+<p>(8)   $\dfrac{x^2 + a}{x + a} = x - a + \dfrac{a^2 + a}{x + a}$ 通过除法。因此答案是 $\dfrac{x^2}{2} - ax + (a^2 + a)\log_\epsilon (x + a) + C$。（请参阅<a href="18.html#intex1">此处</a>和<a href="18.html#intex2">此处</a>。）
+
+<p>(9)   $\dfrac{x^4}{4} + 3x^3 + \dfrac{27}{2} x^2 + 27x + C$。
+
+<p>(10)  $\dfrac{x^3}{3} + \dfrac{2 - a}{2} x^2 - 2ax + C$。
+
+<p>(11)  $a^2(2x^{\frac{3}{2}} + \tfrac{9}{4} x^{\frac{4}{3}}) + C$。
+
+<p>(12)  $-\tfrac{1}{3} \cos\theta - \tfrac{1}{6} \theta + C$。
+
+<p>(13)  $\dfrac{\theta}{2} + \dfrac{\sin 2a\theta}{4a} + C$。
+
+<p>(14)  $\dfrac{\theta}{2} - \dfrac{\sin 2\theta}{4} + C$。
+
+<p>(15)  $\dfrac{\theta}{2} - \dfrac{\sin 2a\theta}{4a} + C$。
+
+<p>(16)  $\tfrac{1}{3} \epsilon^{3x}$。% [F1: +C?]
+
+<p>(17)  $\log(1 + x) + C$。
+
+<p>(18)  $-\log_\epsilon (1 - x) + C$。
+<br>
+<hr>
+<a href="19.html">下一页 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

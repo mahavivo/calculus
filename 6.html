@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>和、差、积与商 | 微积分简易教程</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 6}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>和、差、积与商</h1>
+<p class="a rotatedFloralHeartBullet">
+
+<p>我们已经学会了如何对简单的代数函数（例如 $x^2 + c$ 或 $ax^4$）进行微分，现在我们必须考虑如何处理两个或多个函数的*和*<a name="sumdiffer"/>。
+
+<p>例如，设
+\[
+y = (x^2+c) + (ax^4+b);
+\]
+它的 $\dfrac{dy}{dx}$ 会是什么？我们如何开始这项新工作呢？
+
+<p>这个问题的答案非常简单：只需一个接一个地对它们进行微分，如下所示：
+\[
+\dfrac{dy}{dx} = 2x + 4ax^3. (答案)
+\]
+
+<p>如果您对这是否正确有任何疑问，请尝试一个更一般的情况，使用第一性原理进行运算。方法如下。
+
+<p>令 $y = u+v$，其中 $u$ 是 $x$ 的任何函数，$v$ 是 $x$ 的任何其他函数。然后，让 $x$ 增加到 $x+dx$，$y$ 将增加到 $y+dy$；$u$ 将增加到 $u+du$；而 $v$ 将增加到 $v+dv$。
+
+<p>我们将有：
+
+<p>$  y+dy = u+du + v+dv.$
+<p>减去原始的 $y = u+v$，我们得到
+<p>$dy = du+dv, $
+<p>并且两边都除以 $dx$，我们得到：
+<p>$\dfrac{dy}{dx} = \dfrac{du}{dx} + \dfrac{dv}{dx}.$
+
+<p>这证明了该过程的正确性。分别对每个函数进行微分，并将结果相加。因此，如果我们现在采用上一段的示例，并放入两个函数的值，我们将得到，使用所示的符号（<a href="3.html#note">第三章</a>），
+\begin{alignat*}{2}
+\frac{dy}{dx}
+  & = \frac{d(x^2+c)}{dx} &&+ \frac{d(ax^4+b)}{dx} \\
+  & = 2x                  &&+ 4ax^3,
+\end{alignat*}
+与之前完全相同。
+
+<p>如果有三个 $x$ 的函数，我们可以称之为 $u$、$v$ 和 $w$，使得
+\begin{align*}
+y &= u+v+w; \\
+ \text{那么}\;
+\frac{dy}{dx} &= \frac{du}{dx} + \frac{dv}{dx} + \frac{dw}{dx}.
+\end{align*}
+
+<p>至于*减法*，它立即得出；因为如果函数 $v$ 本身带有负号，则其微分系数也将为负；因此，通过微分
+\begin{align*}
+y &= u-v, \\
+\text{我们应该得到}\;
+\frac{dy}{dx} &= \frac{du}{dx} - \frac{dv}{dx}.
+\end{align*}
+
+<p>但是，当我们处理*乘积*时，事情就没那么简单了。
+
+<p>假设我们被要求对表达式
+\[
+y = (x^2+c) × (ax^4+b),
+\]
+进行微分，我们该怎么做？结果肯定*不*是 $2x × 4ax^3$；因为很容易看出，$c × ax^4$ 或 $x^2 × b$ 都不会被纳入该乘积中。
+
+<p>现在有两种方法可以进行运算。
+
+<p>*第一种方法。* 先进行乘法运算，然后得出结果后再进行微分。
+
+<p>因此，我们将 $x^2 + c$ 和 $ax^4 + b$ 相乘。
+
+<p>这得到 $ax^6 + acx^4 + bx^2 + bc$。
+
+<p>现在进行微分，我们得到：
+\[
+\dfrac{dy}{dx} = 6ax^5 + 4acx^3 + 2bx.
+\]
+
+<p>*第二种方法。* 回到第一性原理，并考虑方程
+\[
+y = u × v;
+\]
+其中 $u$ 是 $x$ 的一个函数，$v$ 是 $x$ 的任何其他函数。然后，如果 $x$ 增长为 $x+dx$；$y$ 增长为 $y+dy$；并且 $u$ 变为 $u+du$，$v$ 变为 $v+dv$，我们将有：
+\begin{align*}
+ y + dy &= (u + du) × (v + dv) \\
+        &= u · v + u · dv + v · du + du · dv.
+\end{align*}
+
+<p>现在，$du · dv$ 是二阶小量，因此在极限情况下可以忽略，留下
+\[
+y + dy = u · v + u · dv + v · du.
+\]
+
+<p>然后，减去原始的 $y = u· v$，我们剩下
+\[
+dy = u · dv + v · du;
+\]
+并且，两边都除以 $dx$，我们得到结果：
+\[
+\dfrac{dy}{dx} = u\, \dfrac{dv}{dx} + v\, \dfrac{du}{dx}.
+\]
+
+<p>这表明我们的指令如下：<a name="differprod"/>
+*要对两个函数的乘积进行微分，将每个函数乘以另一个函数的微分系数，并将获得的两个乘积相加。*
+
+<p>您应该注意，此过程相当于以下操作：在对 $v$ 进行微分时，将 $u$ 视为常数；然后在对 $u$ 进行微分时，将 $v$ 视为常数；并且整个微分系数 $\dfrac{dy}{dx}$ 将是这两种运算的总和。
+
+<p>现在，找到此规则后，将其应用于上面考虑的具体示例。
+
+<p>我们想要对乘积
+\[
+(x^2 + c) × (ax^4 + b).
+\]
+进行微分。
+
+<p>调用 $(x^2 + c) = u$；并且 $(ax^4 + b) = v$。
+
+<p>然后，按照刚刚建立的一般规则，我们可以写：
+\begin{alignat*}{2}
+\dfrac{dy}{dx}
+&= (x^2 + c)\, \frac{d(ax^4 + b)}{dx} &&+ (ax^4 + b)\, \frac{d(x^2 + c)}{dx} \\
+&= (x^2 + c)\, 4ax^3                  &&+ (ax^4 + b)\, 2x \\
+&= 4ax^5 + 4acx^3                     &&+ 2ax^5 + 2bx,   \\
+
+\dfrac{dy}{dx}
+&= 6ax^5 + 4acx^3                     &&+ 2bx,
+\end{alignat*}
+与之前完全相同。
+
+<p>最后，我们必须对*商*进行微分。
+
+<p>思考一下这个例子，$y = \dfrac{bx^5 + c}{x^2 + a}$。在这种情况下，尝试预先进行除法运算是没有用的，因为 $x^2 + a$ 不会除以 $bx^5 + c$，它们也没有任何公因子。因此，我们别无选择，只能回到第一性原理，并找到一个规则。
+
+   所以我们将设置
+\[
+y = \frac{u}{v};
+\]
+其中 $u$ 和 $v$ 是自变量 $x$ 的两个不同函数。然后，当 $x$ 变为 $x + dx$ 时，$y$ 将变为 $y + dy$；$u$ 将变为 $u + du$；$v$ 将变为 $v + dv$。所以
+\[
+y + dy = \dfrac{u + du}{v + dv}.
+\]
+
+<p>现在执行代数除法，如下所示：
+<a name="figure666a">
+<img src="33283-t/images/666a.pdf.png-1.png">
+
+<p>由于这两个余数都是二阶小量，可以忽略不计，并且除法可以到此为止，因为任何进一步的余数都将是更小的量级。
+
+<p>所以我们得到了：
+\begin{align*}
+y + dy &= \dfrac{u}{v} + \dfrac{du}{v} - \dfrac{u· dv}{v^2}; \\
+\end{align*}
+可以写成
+\begin{align*}
+&= \dfrac{u}{v} + \dfrac{v· du - u· dv}{v^2}. \\
+\end{align*}
+现在减去原始的 $y = \dfrac{u}{v}$，我们剩下：
+\begin{align*}
+dy &= \dfrac{v· du - u· dv}{v^2}; \\
+
+ \text{因此}\;
+\dfrac{dy}{dx}
+&= \dfrac{v\, \dfrac{du}{dx} - u\, \dfrac{dv}{dx}}{v^2}.
+\end{align*}
+
+<p>这给了我们关于*如何对两个函数的商进行微分的说明。将除数函数乘以被除数函数的微分系数；然后将被除数函数乘以除数函数的微分系数；并相减。最后，除以除数函数的平方*。
+
+<p>
+回到我们的示例 $y = \dfrac{bx^5 + c}{x^2 + a}$，
+\begin{align*}
+\text{写为}\;
+bx^5 + c &= u; \\
+ \text{和}\;
+x^2  + a &= v.
+\end{align*}
+
+<p>那么
+\begin{align*}
+\frac{dy}{dx}
+&= \frac{(x^2 + a)\, \dfrac{d(bx^5 + c)}{dx} - (bx^5 + c)\, \dfrac{d(x^2 + a)}{dx}}{(x^2 + a)^2} \\
+&= \frac{(x^2 + a)(5bx^4) - (bx^5 + c)(2x)}{(x^2 + a)^2}, \\
+\frac{dy}{dx}
+&= \frac{3bx^6 + 5abx^4 - 2cx}{(x^2 + a)^2}.\quad\text{(答案)}
+\end{align*}
+
+<p>商的计算通常很繁琐，但并没有什么困难。
+
+<p>下面给出了更多完全解决的示例。<a name="examples3"/>
+
+<p>(1) 对 $y = \dfrac{a}{b^2} x^3 - \dfrac{a^2}{b} x + \dfrac{a^2}{b^2}$ 求微分。
+
+<p>因为 $\dfrac{a^2}{b^2}$ 是一个常数，所以它会消失，我们有
+\[
+\frac{dy}{dx} = \frac{a}{b^2} × 3 × x^{3-1} - \frac{a^2}{b} × 1 × x^{1-1}.
+\]
+
+<p>但是 $x^{1-1} = x^0 = 1$；所以我们得到：
+\[
+\frac{dy}{dx} = \frac{3a}{b^2} x^2 - \frac{a^2}{b}.
+\]
+
+<p>(2) 对 $y = 2a\sqrt{bx^3} - \dfrac{3b \sqrt[3]{a}}{x} - 2\sqrt{ab}$ 求微分。
+
+<p>将 $x$ 放入指数形式，我们得到
+\[
+y = 2a\sqrt{b} x^{\frac{3}{2}} - 3b \sqrt[3]{a} x^{-1} - 2\sqrt{ab}.
+\]
+
+<p>现在
+\[
+\frac{dy}{dx} = 2a\sqrt{b} × \tfrac{3}{2} × x^{\frac{3}{2}-1} - 3b\sqrt[3]{a} × (-1) × x^{-1-1}; \\
+ \text{或者, }\;
+\frac{dy}{dx} = 3a\sqrt{bx} + \frac{3b\sqrt[3]{a}}{x^2}.
+\]
+
+<p>(3) 对 $z = 1.8 \sqrt[3]{\dfrac{1}{\theta^2}} - \dfrac{4.4}{\sqrt[5]{\theta}} - 27°$ 求微分。
+
+<p>这可以写成：$z= 1.8\, \theta^{-\frac{2}{3}} - 4.4\, \theta^{-\frac{1}{5}} - 27°$。
+
+<p>$27°$ 消失，我们有
+\[
+\frac{dz}{d\theta}
+  = 1.8 × -\tfrac{2}{3} × \theta^{-\frac{2}{3}-1}
+  - 4.4 × \left(-\tfrac{1}{5}\right)\theta^{-\frac{1}{5}-1}; \\
+ \text{或者}\;,
+\frac{dz}{d\theta}
+  = -1.2\, \theta^{-\frac{5}{3}} + 0.88\, \theta^{-\frac{6}{5}}; \\
+\text{或者,}\;
+\frac{dz}{d\theta} = \frac{0.88}{\sqrt[5]{\theta^6}}
+  - \frac{1.2}{\sqrt[3]{\theta^5}}.
+\]
+
+<p>(4) 对 $v = (3t^2 - 1.2 t + 1)^3$ 求微分。
+
+<p>一种直接的方法将在稍后解释（请参阅<a href="9.html#dodge">此处</a>）；但是，我们现在仍然可以毫无困难地进行处理。
+
+<p>展开立方，我们得到
+\[
+v = 27t^6 - 32.4t^5 + 39.96t^4 - 23.328t^3 + 13.32t^2 - 3.6t + 1;
+\]
+因此
+\[
+\frac{dv}{dt} = 162t^5 - 162t^4 + 159.84t^3 - 69.984t^2 + 26.64t - 3.6.
+\]
+
+<p>(5) 对 $y = (2x - 3)(x + 1)^2$ 求微分。
+\begin{alignat*}{2}
+\frac{dy}{dx}
+  &= (2x - 3)\, \frac{d\bigl[(x + 1)(x + 1)\bigr]}{dx}
+     &&+ (x + 1)^2\, \frac{d(2x - 3)}{dx} \\
+  &= (2x - 3) \left[(x + 1)\, \frac{d(x + 1)}{dx}\right.
+     &&+ \left.(x + 1)\, \frac{d(x + 1)}{dx}\right] \\
+  &  &&+ (x + 1)^2\, \frac{d(2x - 3)}{dx} \\
+
+  &= 2(x + 1)\bigl[(2x - 3) + (x + 1)\bigr] &&= 2(x + 1)(3x - 2)
+\end{alignat*}
+或者，更简单地，先展开，然后再进行微分。
+
+<p>(6) 对 $y = 0.5 x^3(x-3)$ 求微分。
+\begin{align*}
+\frac{dy}{dx}
+  &= 0.5\left[x^3 \frac{d(x-3)}{dx} + (x-3) \frac{d(x^3)}{dx}\right] \\
+  &= 0.5\left[x^3 + (x-3) × 3x^2\right] = 2x^3 - 4.5x^2.
+\end{align*}
+
+<p>与前一个示例相同的备注。
+
+<p>(7) 对 $w = \left(\theta + \dfrac{1}{\theta}\right)
+   \left(\sqrt{\theta} + \dfrac{1}{\sqrt{\theta}}\right)$ 求微分。
+
+<p>这可以写成
+\begin{gather*}
+w = (\theta + \theta^{-1})(\theta^{\frac{1}{2}} + \theta^{-\frac{1}{2}}). \\
+\begin{aligned}
+\frac{dw}{d\theta}
+  &= (\theta + \theta^{-1})
+     \frac{d(\theta^{\frac{1}{2}} + \theta^{-\frac{1}{2}})}{d\theta}
+   + (\theta^{\frac{1}{2}} + \theta^{-\frac{1}{2}})
+     \frac{d(\theta+\theta^{-1})}{d\theta} \\
+
+  &= (\theta + \theta^{-1})(\tfrac{1}{2}\theta^{-\frac{1}{2}}
+                          - \tfrac{1}{2}\theta^{-\frac{3}{2}})
+   + (\theta^{\frac{1}{2}} + \theta^{-\frac{1}{2}})(1 - \theta^{-2}) \\
+
+  &= \tfrac{1}{2}(\theta^{ \frac{1}{2}} + \theta^{-\frac{3}{2}}
+                - \theta^{-\frac{1}{2}} - \theta^{-\frac{5}{2}})
+   + (\theta^{ \frac{1}{2}} + \theta^{-\frac{1}{2}}
+    - \theta^{-\frac{3}{2}} - \theta^{-\frac{5}{2}}) \\
+
+  &= \tfrac{3}{2} \left(\sqrt{\theta} - \frac{1}{\sqrt{\theta^5}}\right)
+   + \tfrac{1}{2} \left(\frac{1}{\sqrt{\theta}} - \frac{1}{\sqrt{\theta^3}}\right).
+\end{aligned}
+\end{gather*}
+
+<p>同样，可以通过先乘以两个因子，然后再进行微分来更简单地获得此结果。然而，这并非总是可能的；例如，参见<a href="16.html#example1">此处</a>的示例 8，其中*必须*使用对乘积进行微分的规则。
+
+<p>(8) 对 $y =\dfrac{a}{1 + a\sqrt{x} + a^2x}$ 求微分。
+\begin{align*}
+\frac{dy}{dx}
+  &= \frac{(1 + ax^{\frac{1}{2}} + a^2x) × 0 - a\dfrac{d(1 + ax^{\frac{1}{2}} + a^2x)}{dx}}
+          {(1 + a\sqrt{x} + a^2x)^2} \\
+  &= - \frac{a(\frac{1}{2}ax^{-\frac{1}{2}} + a^2)}
+            {(1 + ax^{\frac{1}{2}} + a^2x)^2}.
+\end{align*}
+
+<p>(9) 对 $y = \dfrac{x^2}{x^2 + 1}$ 求微分。
+\[
+\dfrac{dy}{dx} = \dfrac{(x^2 + 1)\, 2x - x^2 × 2x}{(x^2 + 1)^2} = \dfrac{2x}{(x^2 + 1)^2}.
+\]
+
+<p>(10) 对 $y = \dfrac{a + \sqrt{x}}{a - \sqrt{x}}$ 求微分。
+
+<p>在索引形式中，$y = \dfrac{a + x^{\frac{1}{2}}}{a - x^{\frac{1}{2}}}$。
+\[
+\frac{dy}{dx}
+  = \frac{(a - x^{\frac{1}{2}})( \tfrac{1}{2} x^{-\frac{1}{2}})
+        - (a + x^{\frac{1}{2}})(-\tfrac{1}{2} x^{-\frac{1}{2}})}
+         {(a - x^{\frac{1}{2}})^2}
+  = \frac{ a - x^{\frac{1}{2}}
+         + a + x^{\frac{1}{2}}}
+        {2(a - x^{\frac{1}{2}})^2\, x^{\frac{1}{2}}}; \\
+ \text{因此}\;
+\frac{dy}{dx} = \frac{a}{(a - \sqrt{x})^2\, \sqrt{x}}.
+\]
+
+<p>(11) 对
+
+<p>\begin{align*}
+\theta &= \frac{1 - a \sqrt[3]{t^2}}{1 + a \sqrt[2]{t^3}}. \\
+   \text{现在}\;
+\theta &= \frac{1 - at^{\frac{2}{3}}}{1 + at^{\frac{3}{2}}}.
+\end{align*}
+求微分。
+\begin{align*}
+\frac{d\theta}{dt}
+  &= \frac{(1 + at^{\frac{3}{2}}) (-\tfrac{2}{3} at^{-\frac{1}{3}})
+         - (1 - at^{\frac{2}{3}}) × \tfrac{3}{2} at^{\frac{1}{2}}}
+          {(1 + at^{\frac{3}{2}})^2} \\
+  &= \frac{5a^2 \sqrt[6]{t^7} - \dfrac{4a}{\sqrt[3]{t}} - 9a \sqrt[2]{t}}
+          {6(1 + a \sqrt[2]{t^3})^2}.
+\end{align*}
+
+<p>(12) 一个横截面为正方形的蓄水池，其边与垂直方向成 $45°$ 角倾斜。底部边长为 $200$ 英尺。求当水深变化 $1$ 英尺时，流入或流出的量的表达式；因此，当水深在 $24$ 小时内从 $14$ 英尺降至 $10$ 英尺时，求出每小时提取的加仑数。
+
+<p>高度为 $H$，底边为 $A$ 和 $a$ 的棱锥截体的体积为 $V = \dfrac{H}{3} (A + a + \sqrt{Aa} )$。很容易看出，如果斜率为 $45°$，如果深度为 $h$，则水面正方形的边长为 $200 + 2h$ 英尺，因此水的体积为
+\[
+\dfrac{h}{3} [200^2 + (200 + 2h)^2 + 200(200 + 2h)]
+= 40,000h + 400h^2 + \dfrac{4h^3}{3}.
+\]
+
+<p>$\dfrac{dV}{dh} = 40,000 + 800h + 4h^2 = {}$ 立方英尺每英尺深度变化。从 $14$ 英尺到 $10$ 英尺的平均水平为 $12$ 英尺，当 $h = 12$ 时，$\dfrac{dV}{dh} = 50,176$ 立方英尺。
+
+<p>对应于 $24$ 小时内 $4$ 英尺深度变化的每小时加仑数 ${} = \dfrac{4 × 50,176 × 6.25}{24} = 52,267$ 加仑。
+
+<p>(13) 当温度 $t°$ C. 高于 $80°$ 时，饱和蒸汽的绝对压力（以大气压为单位）$P$ 由杜隆表示为 $P = \left( \dfrac{40 + t}{140} \right)^5$。求在 $100°$ C. 时压力随温度的变化率。
+
+<p>通过二项式定理（请参阅<a href="14.html#binomtheo">此处</a>）展开分子。
+\[
+P = \frac{1}{140^5} (40^5 + 5×40^4 t + 10 × 40^3 t^2 + 10 × 40^2 t^3
+                            + 5 × 40t^4 + t^5);
+\]
+\begin{align*}
+ \text{因此}\;  \dfrac{dP}{dt} = &\dfrac{1}{537,824 × 10^5}\\
+      &(5 × 40^4 + 20 × 40^3 t + 30 × 40^2 t^2 + 20 × 40t^3 + 5t^4),
+\end{align*}
+当 $t = 100$ 时，这变为每摄氏度温度变化 $0.036$ 大气压。
+
+<p>
+<hr><h3>练习 III</h3>
+
+<p>
+(1) 对以下各项求微分<a name="examples2"/>
+
+<p>(*a*)  $u = 1 + x + \dfrac{x^2}{1 × 2} + \dfrac{x^3}{1 × 2 × 3} + \dotsb$。
+<p>(*b*)  $y = ax^2 + bx + c$。 (*c*) $y = (x + a)^2$。
+<p>(*d*)  $y = (x + a)^3$。
+
+<p>(2) 如果 $w = at - \frac{1}{2}bt^2$，求 $\dfrac{dw}{dt}$。
+
+<p>(3) 求以下微分系数
+\[
+y = (x + \sqrt{-1}) × (x - \sqrt{-1}).
+\]
+
+<p>(4) 对以下求微分
+\[
+y = (197x - 34x^2) × (7 + 22x - 83x^3).
+\]
+
+<p>(5) 如果 $x = (y + 3) × (y + 5)$，求 $\dfrac{dx}{dy}$。
+
+<p>(6) 对 $y = 1.3709x × (112.6 + 45.202x^2)$ 求微分。
+
+<p>求以下微分系数
+
+<p>(7) $y = \dfrac{2x + 3}{3x + 2}$。
+<p>(8) $y = \dfrac{1 + x + 2x^2 + 3x^3}{1 + x + 2x^2}$。
+<p>(9) $y = \dfrac{ax + b}{cx + d}$。
+<p>(10) $y = \dfrac{x^n + a}{x^{-n} + b}$。
+
+<p>(11) 白炽灯灯丝的温度 $t$ 与通过灯的电流的关系如下
+\[
+C = a + bt + ct^2.
+\]
+
+<p>求一个表示电流变化量对应于温度变化的表达式。
+
+<p>(12) 已经提出了以下公式来表示在温度 $t°$ C. 时导线的电阻 $R$ 与同一导线在 $0°$ 摄氏度的电阻 $R_0$ 之间的关系，$a$、$b$、$c$ 为常数。
+\begin{align*}
+R &= R_0(1 + at + bt^2). \\
+R &= R_0(1 + at + b\sqrt{t}). \\
+R &= R_0(1 + at + bt^2)^{-1}.
+\end{align*}
+
+<p>求由这些公式给出的电阻随温度的变化率。
+
+<p>(13) 已经发现，某种类型的标准电池的电动势 $E$ 会根据关系式随温度 $t$ 变化
+\[
+E = 1.4340 \bigl[1 - 0.000814(t-15)
+                 + 0.000007(t-15)^2\bigr] \text{ 伏特}.
+\]
+
+<p>求在 $15°$、$20°$ 和 $25°$ 时，每度的电动势变化量。
+
+<p>(14) 艾尔顿夫人发现，为了维持长度为 $l$，强度为 $i$ 的电流的电弧所需的电动势为
+\[
+E = a + bl + \frac{c + kl}{i},
+\]
+其中 $a$、$b$、$c$、$k$ 为常数。
+
+<p>求出电动势变化的表达式
+（*a*）关于电弧的长度；
+（*b*）关于电流强度。
+
+<p><h3 class="answers">答案</h3>
+
+<p>(1)  (*a*) $1 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6} + \dfrac{x^4}{24} + \ldots$
+	<p>(*b*) $2ax + b$。
+	<p>(*c*) $2x + 2a$。
+    <p>(*d*) $3x^2 + 6ax + 3a^2$。
+
+<p>(2)  $\dfrac{dw}{dt} = a - bt$。
+<p>(3)  $\dfrac{dy}{dx} = 2x$。
+<p>(4)  $14110x^4 - 65404x^3 - 2244x^2 + 8192x + 1379$。
+<p>(5)  $\dfrac{dx}{dy} = 2y + 8$。
+<p>(6)  $185.9022654x^2 + 154.36334$。
+<p>(7)  $\dfrac{-5}{(3x + 2)^2}$。
+<p>(8)  $\dfrac{6x^4 + 6x^3 + 9x^2}{(1 + x + 2x^2)^2}$。
+<p>(9)  $\dfrac{ad - bc}{(cx + d)^2}$。
+<p>(10) $\dfrac{anx^{-n-1} + bnx^{n-1} + 2nx^{-1}}{(x^{-n} + b)^2}$。
+<p>(11) $b + 2ct$。
+<p>(12)  $R_0(a + 2bt)$，&nbsp;&nbsp; $R_0 \left(a + \dfrac{b}{2\sqrt{t}}\right)$，&nbsp;&nbsp;
+  $-\dfrac{R_0(a + 2bt)}{(1 + at + bt^2)^2}$&nbsp;&nbsp; 或&nbsp;&nbsp; $\dfrac{R^2 (a + 2bt)}{R_0}$。
+
+<p>(13)  $1.4340(0.000014t - 0.001024)$，&nbsp;&nbsp; $-0.00117$，&nbsp;&nbsp; $-0.00107$，&nbsp;&nbsp; $-0.00097$。
+
+<p>(14)  $\dfrac{dE}{dl} = b + \dfrac{k}{i}$，&nbsp;&nbsp; $\dfrac{dE}{di} = -\dfrac{c + kl}{i^2}$。
+
+<p>
+<br>
+<hr>
+<a href="7.html">下一页 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

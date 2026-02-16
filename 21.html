@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>找到一些解 | 微积分入门</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 21}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>找到一些解</h1>
+<p class="a rotatedFloralHeartBullet">
+
+<p>在本章中，我们将着手找到一些重要微分方程的解，并为此目的使用前几章中显示的过程。
+
+<p>初学者现在知道这些过程本身有多么容易，在这里他将开始意识到积分是一门<em>艺术</em>。 与所有艺术一样，只有通过勤奋和有规律的练习才能掌握这门艺术的技巧。 想要获得这种技巧的人必须做例子，更多的例子，以及更多的例子，这些例子在所有关于微积分的常规论述中都可以找到。 我们在这里的目的是为严肃的工作提供最简洁的介绍。
+
+<p><hr>
+
+<p><em>示例 (1.)</em> 求微分方程的解
+\[
+ay + b \frac{dy}{dx} = 0.
+\]
+
+<p>移项后得到
+\[
+b \frac{dy}{dx} = -ay.
+\]
+
+<p>现在，仅仅检查这种关系就会告诉我们，我们正在处理 $\dfrac{dy}{dx}$ 与 $y$ 成正比的情况。 如果我们想到将 $y$ 表示为 $x$ 的函数的曲线，那么它在任何点的斜率将与该点的纵坐标成正比，并且如果 $y$ 为正，则将是负斜率。 所以很明显，曲线将是一条衰减曲线，并且该解将包含 $\epsilon^{-x}$ 作为因子。 但是，在不假定这种一点点智慧的情况下，让我们开始工作。
+
+<p>由于 $y$ 和 $dy$ 都出现在方程中并且位于相反的两侧，因此除非我们将 $y$ 和 $dy$ 都移到一边，并将 $dx$ 移到另一边，否则我们无能为力。 为此，我们必须将通常不可分离的伴侣 $dy$ 和 $dx$ 分开。
+\[
+\frac{dy}{y} = - \frac{a}{b}\, dx.
+\]
+
+<p>完成这项工作后，我们现在可以看到两边都进入了可积分的形式，因为我们认识到 $\dfrac{dy}{y}$ 或 $\dfrac{1}{y}\, dy$ 是我们在微分对数时遇到的微分（<a href="14.html#expolo">此处</a>）。 因此，我们可以立即写下积分的指令：
+\[
+\int \frac{dy}{y} = \int -\frac{a}{b}\, dx;
+\]
+并且，进行两次积分后，我们有：
+\[
+\log_\epsilon y = -\frac{a}{b} x + \log_\epsilon C,
+\]
+
+其中 $\log_\epsilon C$ 是尚未确定的积分常数。 然后，求反对数，我们得到：
+\[
+y = C \epsilon^{-\frac{a}{b} x},
+\]
+这就是所需的<em>解</em>*。 现在，此解看起来与从中构造出的原始微分方程完全不同：但是，对于专家数学家来说，它们都传达了关于 $y$ 如何取决于 $x$ 的相同信息。
+
+<p><note>*我们可以写下任何形式的常数作为“积分常数”，并且此处首选采用 $\log_\epsilon C$ 的形式，因为该行方程中的其他项都是或被视为对数；如果添加的常数<em>属于同一类型</em>，则可以避免以后的复杂情况。</note>
+
+<p>现在，至于 $C$，它的含义取决于 $y$ 的初始值。 因为如果我们将 $x = 0$ 代入以查看 $y$ 那时具有什么值，我们发现这将使得 $y = C \epsilon^{-0}$； 并且由于 $\epsilon^{-0} = 1$，我们看到 $C$ 实际上是 $y$ 开始时的特定值*。 我们可以称之为 $y_0$，所以将解写成
+\[
+y = y_0 \epsilon^{-\frac{a}{b} x}.
+\]
+<p><note>*将有关“积分常数”的内容与<a href="17.html#figure48">此处</a>的<a href="17.html#constant">图 48</a>以及<a href="17.html#figure51">图 51</a>进行比较。</note>
+<p><hr>
+
+<p><em>示例 (2.)</em>
+
+<p>让我们以求解
+\[
+ay + b \frac{dy}{dx} = g,
+\]
+的例子为例，其中 $g$ 是一个常数。 同样，检查方程式将表明，(1) $\epsilon^x$ 会以某种方式出现在解中，以及 (2) 如果在曲线的任何部分 $y$ 变为最大值或最小值，从而 $\dfrac{dy}{dx} = 0$，则 $y$ 的值为 $= \dfrac{g}{a}$。 但是，让我们像以前一样开始工作，分离微分，并尝试将事物转换为某种可积分的形式。
+\begin{align*}
+b\frac{dy}{dx}           &= g -ay; \\
+\frac{dy}{dx}            &= \frac{a}{b}\left(\frac{g}{a}-y\right); \\
+\frac{dy}{y-\dfrac{g}{a}} &= -\frac{a}{b}\, dx.
+\end{align*}
+
+<p>现在，我们已尽力使一侧仅包含 $y$ 和 $dy$，而另一侧仅包含 $dx$。 但是，左侧的结果是否可积分？
+
+<p>它与<a href="14.html#differlog">此处</a>的结果形式相同；因此，编写积分指令，我们有：
+\[
+\int{\frac{dy}{y-\dfrac{g}{a}}} = - \int{\frac{a}{b}\, dx};
+\]
+并且，进行积分，并加上适当的常数，
+\begin{align*}
+\log_\epsilon\left(y-\frac{g}{a}\right) &= -\frac{a}{b}x + \log_\epsilon C; \\
+ \text{因此}\;\;        y-\frac{g}{a} &= C\epsilon^{-\frac{a}{b}x}; \\
+ \text{最后，}\;\;              y &= \frac{g}{a} + C\epsilon^{-\frac{a}{b}x},
+\end{align*}
+这是<em>解</em>。
+
+<p>如果规定当 $x = 0$ 时 $y = 0$，则我们可以找到 $C$；因为指数变为 $= 1$；并且我们有
+\begin{align*}
+                0 &= \frac{g}{a} + C, \\
+ \text{或}\;  C &= -\frac{g}{a}.
+\end{align*}
+
+<p>代入这个值后，解变为
+\[
+y = \frac{g}{a} (1-\epsilon^{-\frac{a}{b} x}).
+\]
+
+<p>但是，此外，如果 $x$ 无限增长，$y$ 将增长到最大值；因为当 $x=\infty$ 时，指数 $= 0$，给出 $y_{\text{max.}} = \dfrac{g}{a}$。 代入它，我们最终得到
+\[
+y = y_{\text{max.}}(1-\epsilon^{-\frac{a}{b} x}).
+\]
+
+<p>此结果在物理科学中也很重要。
+
+<p><hr>
+
+<p>
+<em>示例 (3.)</em>
+
+   令 $ay+b\frac{dy}{dt} = g · \sin 2\pi nt$。
+
+<p>我们发现它比前面的方法更难处理。 首先将所有项除以 $b$。
+\[
+\frac{dy}{dt} + \frac{a}{b}y = \frac{g}{b} \sin 2\pi nt.
+\]
+
+<p>现在，就其本身而言，左侧是不可积分的。 但是，可以通过技巧将其变成可积分的——而这就是技巧和实践建议计划的地方——将所有项乘以 $\epsilon^{\frac{a}{b} t}$，从而得到：
+\[
+\frac{dy}{dt} \epsilon^{\frac{a}{b} t} + \frac{a}{b} y \epsilon^{\frac{a}{b} t} = \frac{g}{b} \epsilon^{\frac{a}{b} t} · \sin 2 \pi nt,
+\]
+这与
+\[
+\frac{dy}{dt} \epsilon^{\frac{a}{b} t} + y \frac{d(\epsilon^{\frac{a}{b} t})}{dt} = \frac{g}{b} \epsilon^{\frac{a}{b} t} · \sin 2 \pi nt;
+\]
+相同，并且这是一个完美的微分，可以进行积分，因此：–因为，如果 $u = y\epsilon^{\frac{a}{b} t}$，$\dfrac{du}{dt} = \dfrac{dy}{dt} \epsilon^{\frac{a}{b} t} + y \dfrac{d(\epsilon^{\frac{a}{b} t})}{dt}$，
+\begin{align*}
+  y \epsilon^{\frac{a}{b} t}
+  &= \frac{g}{b} \int \epsilon^{\frac{a}{b} t} · \sin 2 \pi nt · dt + C, \\
+ 或
+y &= \frac{g}{b} \epsilon^{-\frac{a}{b} t}
+     \int \epsilon^{ \frac{a}{b} t} · \sin 2\pi nt · dt
+       + C\epsilon^{-\frac{a}{b} t}.
+\tag*{[A]}
+\end{align*}
+
+<p>最后一项显然是一个随着 $t$ 增大而消失的项，可以忽略。 现在的问题在于找到作为因子的积分。 为了解决这个问题，我们求助于分部积分的技巧（请参阅<a href="20.html#intparts">此处</a>），其通用公式为 $\int u dv = uv - \int v du$。 为此，写成
+\begin{align*}
+&\left\{
+\begin{aligned}
+ u &= \epsilon^{\frac{a}{b} t}; \\
+dv &= \sin 2\pi nt · dt.
+\end{aligned}
+\right.  \\
+\end{align*}
+那么我们有
+\begin{align*}
+&\left\{
+\begin{aligned}
+du &= \epsilon^{\frac{a}{b} t} × \frac{a}{b}\, dt; \\
+v &= - \frac{1}{2\pi n} \cos 2\pi nt.
+\end{aligned}
+\right.
+\end{align*}
+
+<p>代入这些值，所讨论的积分变为：
+\begin{align*}
+\int \epsilon^{\frac{a}{b} t} &{} · \sin 2 \pi n t · dt \\
+&= -\frac{1}{2 \pi n} · \epsilon^{\frac{a}{b} t} · \cos 2 \pi nt
+   -\int -\frac{1}{2\pi n} \cos 2 \pi nt · \epsilon^{\frac{a}{b} t} · \frac{a}{b}\, dt \\
+&= -\frac{1}{2 \pi n} \epsilon^{\frac{a}{b} t} \cos 2 \pi nt
+   +\frac{a}{2 \pi nb} \int \epsilon^{\frac{a}{b} t} · \cos 2 \pi nt · dt.
+\tag*{[B]}
+\end{align*}
+
+<p>最后一个积分仍然是不可约的。 为了避开困难，重复左侧的分部积分，但通过以下方式进行反向处理：
+\begin{align*}
+&\left\{
+\begin{aligned}
+u &= \sin 2 \pi n t ; \\
+dv &= \epsilon^{\frac{a}{b} t} · dt;
+\end{aligned}
+\right. \\[1ex]
+ 因此
+&\left\{
+  \begin{aligned}
+  du &= 2 \pi n · \cos 2 \pi n t · dt; \\
+ v &= \frac{b}{a} \epsilon ^{\frac{a}{b} t}
+\end{aligned}
+\right.
+\end{align*}
+
+<p>代入这些，我们得到
+\begin{align*}
+\int \epsilon^{\frac{a}{b} t} &{} · \sin 2 \pi n t · dt\\
+&= \frac{b}{a} · \epsilon^{\frac{a}{b} t} · \sin 2 \pi n t -
+   \frac{2 \pi n b}{a} \int \epsilon^{\frac{a}{b} t} · \cos 2 \pi n t · dt. \tag*{[C]}
+\end{align*}
+
+<p>请注意 [C] 中的最终不可约积分与 [B] 中的相同，我们可以通过将 [B] 乘以 $\dfrac{2 \pi nb}{a}$，将 [C] 乘以 $\dfrac{a}{2 \pi nb}$，然后将它们相加来消除它。
+
+<p>清除后的结果为：
+\begin{align*}
+\int \epsilon^{\frac{a}{b} t} · \sin 2 \pi n t · dt
+  &= \epsilon^{\frac{a}{b} t} \left\{\frac{ ab · \sin 2 \pi nt - 2 \pi n b^2 · \cos 2 \pi nt}{ a^2 + 4 \pi^2 n^2 b^2 } \right\}
+\tag*{[D]} &\\
+\end{align*}
+将此值代入 [A]，我们得到
+\begin{align*}
+y &= g \left\{\frac{ a · \sin 2 \pi n t - 2 \pi n b · \cos 2 \pi nt}{ a^2 + 4 \pi^2  n^2 b^2}\right\}. &
+\end{align*}
+
+<p>为了进一步简化，让我们想象一个角度 $\phi$，使得 $\tan \phi = \dfrac{2 \pi n b}{ a}$。
+   那么
+\[
+\sin \phi = \frac{2 \pi nb}{\sqrt{a^2 + 4 \pi^2 n^2 b^2}},
+\]
+ 且
+ \[
+\cos \phi = \frac{a}{\sqrt{a^2 + 4 \pi^2 n^2 b^2}}.  \\
+\]
+代入这些，我们得到：
+ \[
+y = g \frac{\cos \phi · \sin 2 \pi nt
+  - \sin \phi · \cos 2 \pi nt}{\sqrt{a^2 + 4 \pi^2 n^2 b^2}}, \\
+\]
+可以写成
+ \[
+y = g \frac{\sin(2 \pi nt - \phi)}{\sqrt{a^2 + 4 \pi^2 n^2 b^2}},
+\]
+这就是<em>所需的解</em>。
+
+<p>这确实是交流电的方程，其中 $g$ 表示电动势的幅度，$n$ 表示频率，$a$ 表示电阻，$b$ 表示电路的自感系数，而 $\phi$ 是滞后角。
+
+<p><hr>
+
+<p>
+<em>示例 (4.)</em>
+
+   假设
+$M\, dx + N\, dy = 0.$
+
+<p>如果 $M$ 只是 $x$ 的函数，而 $N$ 只是 $y$ 的函数，那么我们可以直接对此表达式进行积分；但是，如果 $M$ 和 $N$ 都是取决于 $x$ 和 $y$ 的函数，那么我们如何积分呢？ 它本身是精确的微分吗？ 也就是说：$M$ 和 $N$ 是否各自是通过从某个公共函数 $U$ 进行偏微分形成的？ 如果是这样，则
+\[\left\{
+  \begin{aligned}
+ \frac{\partial U}{\partial x} = M, \\
+ \frac{\partial U}{\partial y} = N.
+  \end{aligned}
+\right.
+\]
+并且如果存在这样的公共函数，则
+\[
+\frac{\partial U}{\partial x}\, dx + \frac{\partial U}{\partial y}\, dy
+\]
+是精确微分（比较<a href="16.html#partialdiff">此处</a>）。
+
+<p>现在，问题的测试是这样的。 如果该表达式是精确微分，则必须成立
+\begin{align*}
+        \frac{dM}{dy} &= \frac{dN}{dx}; \\
+\text{因为那么}\;
+\frac{d(dU)}{dx\, dy} &= \frac{d(dU)}{dy\, dx},\\
+\end{align*}
+ 这必然是正确的。
+
+<p>以方程
+\[
+(1 + 3 xy)\, dx + x^2\, dy = 0.
+\]
+为例。
+
+<p>这是精确的微分吗？ 使用测试。
+\[\left\{
+  \begin{aligned}
+ \frac{d(1 + 3xy)}{dy}=3x, \\
+
+  \dfrac{d(x^2)}{dx} = 2x,
+
+  \end{aligned}
+\right.
+\]
+两者不一致。 因此，它不是一个精确的微分，并且这两个函数 $1+3xy$ 和 $x^2$ 不是来自共同的原始函数。
+
+<p>但是，在这种情况下，可以找到一个<em>积分因子</em>，也就是说，一个因子，使得如果两者都乘以这个因子，该表达式将变成精确的微分。 没有一个规则可以发现这样的积分因子； 但是经验通常会建议一个。 在本例中，$2x$ 将充当这样的因子。 乘以 $2x$，我们得到
+\[
+(2x + 6x^2y)\, dx + 2x^3\, dy = 0.
+\]
+
+<p>现在将测试应用于此。
+\[
+\left\{
+  \begin{aligned}
+ \frac{d(2x + 6x^2y)}{dy}=6x^2, \\
+ \dfrac{d(2x^3)}{dx} = 6x^2,
+  \end{aligned}
+\right.
+\]
+两者一致。 因此，这是一个精确的微分，可以进行积分。 现在，如果 $w = 2x^3y$，则
+\[
+dw=6x^2y\, dx + 2x^3\, dy.
+\]
+   因此
+   \[
+\int 6x^2y\, dx + \int 2x^3\, dy=w=2x^3y;
+\]
+ 因此，我们得到
+\[
+ U = x^2 + 2x^3y + C.
+\]
+
+<p><hr>
+<em>示例 (5.)</em> 令 $\dfrac{d^2 y}{dt^2} + n^2 y = 0$。
+
+<p>在这种情况下，我们有一个二阶微分方程，其中 $y$ 以二阶微分系数的形式以及以其本身的形式出现。
+
+<p>移项后，我们得到 $\dfrac{d^2 y}{dt^2} = - n^2 y$。
+
+<p>由此可见，我们必须处理一个函数，使其二阶微分系数与自身成正比，但符号相反。 在第 XV 章中，我们发现有一个函数——即<em>正弦</em>（或<em>余弦</em>），它具有此属性。 因此，事不宜迟，我们可以推断出解的形式为 $y = A \sin (pt + q)$。 但是，让我们开始工作。
+
+<p>将原始方程的两边乘以 $2\dfrac{dy}{dt}$ 并积分，得到 $2\dfrac{d^2 y}{dt^2}\, \dfrac{dy}{dt} + 2x^2 y \dfrac{dy}{dt} = 0$，并且
+\[
+2 \frac{d^2y}{dt^2}\, \frac{dy}{dt}
+  = \frac{d \left(\dfrac{dy}{dt}\right)^2}{dt},\quad
+\left(\frac{dy}{dt}\right)^2 + n^2 (y^2-C^2) = 0,
+\]
+其中 $C$ 是一个常数。 然后，取平方根，
+\[
+\frac{dy}{dt} = -n \sqrt{ y^2 - C^2}\quad \text{且}\quad
+\frac{dy}{\sqrt{C^2 - y^2}} = n · dt.
+\]
+
+<p>但是可以证明（参见<a href="15.html#intex3">此处</a>）
+\[
+\frac{1}{\sqrt{C^2 - y^2}} = \frac{d (\arcsin \dfrac{y}{C})}{dy};
+\]
+因此，从角度过渡到正弦，
+\[
+\arcsin \frac{y}{C} = nt + C_1\quad \text{且}\quad y = C \sin (nt + C_1),
+\]
+
+其中 $C_1$ 是一个由积分引入的常数角。
+
+<p>或者，最好将其写为
+\[
+y = A \sin nt + B \cos nt, \text{ 这是解}。
+\]
+
+<p><hr>
+
+<p><em>示例 (6.)</em> $\dfrac{d^2 y}{dt^2} - n^2 y = 0$。
+
+<p>在这里，我们显然要处理一个函数 $y$，该函数具有这样的特性：其二阶微分系数与自身成正比。 我们所知道的唯一具有此特性的函数是指数函数（请参见<a href="14.html#unchanged">此处</a>），因此我们可以肯定，该方程的解将采用这种形式。
+
+<p>和以前一样，将两边乘以 $2 \dfrac{dy}{dx}$，然后积分，我们得到 $2\dfrac{d^2 y}{dx^2}\, \dfrac{dy}{dx} - 2x^2 y \dfrac{dy}{dx}=0$，
+
+ 并且，由于
+\[
+2\frac{d^2 y}{dx^2}\, \frac{dy}{dx}
+  = \frac{d \left(\dfrac{dy}{dx}\right)^2}{dx},\quad
+\left(\frac{dy}{dx}\right)^2 - n^2 (y^2 + c^2) = 0, \\
+\frac{dy}{dx} - n \sqrt{y^2 + c^2} = 0,
+\]
+其中 $c$ 是一个常数，且 $\dfrac{dy}{\sqrt{y^2 + c^2}} = n\, dx$。
+
+<p>现在，如果
+\[
+\quad w = \log_\epsilon ( y+ \sqrt{y^2+ c^2}) = \log_\epsilon u,\\
+
+\frac{dw}{du} = \frac{1}{u},\quad \frac{du}{dy} = 1 + \frac{y}{\sqrt{y^2 + c^2}} = \frac{y + \sqrt{ y^2 + c^2}}{\sqrt{y^2 + c^2}} \\
+\]
+ 并且
+\[
+ \frac{dw}{dy} = \frac{1}{\sqrt{ y^2 + c^2}}.
+\]
+
+<p>因此，积分后，得到
+\[
+\log_\epsilon (y + \sqrt{y^2 + c^2} ) = nx + \log_\epsilon C, \\
+y + \sqrt{y^2 + c^2} = C \epsilon^{nx}.
+
+\tag*{(1)}  \\
+\]
+\[
+   \text{现在}\;  \qquad ( y + \sqrt{y^2 + c^2} ) × ( -y + \sqrt{y^2 + c^2} ) = c^2 ;    \\
+  \text{因此}\;  \qquad  -y + \sqrt{y^2 + c^2} = \dfrac{c^2}{C} \epsilon^{-nx}.
+\tag*{(2)}
+\]
+
+<p>将 (2) 从 (1) 中减去并除以 $2$，我们有
+\[
+y = \frac{1}{2} C \epsilon^{nx} - \frac{1}{2}\, \frac{c^2}{C} \epsilon^{-nx},
+\]
+这样写更方便
+\[
+y = A \epsilon^{nx} + B \epsilon^{-nx}.
+\]
+或者，解（乍一看似乎与原始方程没有任何关系）表明 $y$ 由两项组成，其中一项随着 $x$ 增大呈对数增长，而第二项随着 $x$ 增大而消失。
+
+<p><hr>
+
+<p>
+<em>示例 (7.)</em>
+   令
+\begin{align*}
+b \frac{d^2y}{dt^2} + a \frac{dy}{dt} + gy &= 0.
+\end{align*}
+
+<p>对此表达式的检查将表明，如果 $b = 0$，则它的形式与示例 1 相同，其解为负指数形式。 另一方面，如果 $a = 0$，则其形式与示例 6 的形式相同，其解是正指数和负指数的和。 因此，发现当前示例的解为
+\begin{align*}
+y &= (\epsilon^{-mt})(A \epsilon^{nt} + B \epsilon^{-nt}), \\
+ \text{其中}\;
+m &= \frac{a}{2b}\quad \text{且}\quad
+n  = \sqrt{\frac{a^2}{4b^2}} - \frac{g}{b}.
+\end{align*}
+
+<p>此处未给出获得此解的步骤；可以在高级论著中找到它们。
+
+<p><hr>
+
+<p>
+<em>示例 (8.)</em>
+\[
+\frac{d^2y}{dt^2} = a^2 \frac{d^2y}{dx^2}.
+\]
+
+<p>可以看出（<a href="9.html#Example4">此处</a>），此方程是从原始方程
+\[
+y = F(x+at) + f(x-at),
+\]
+导出的，其中 $F$ 和 $f$ 是 $t$ 的任意函数。
+
+<p>另一种处理方法是通过变量的改变将其转换为
+\[
+\frac{d^2y}{du · dv} = 0,
+\]
+其中 $u = x + at$ 且 $v = x - at$，从而得到相同的通用解。 如果我们考虑一个 $F$ 消失的情况，那么我们只有
+\[
+y = f(x-at);
+\]
+并且这仅仅说明，在时间 $t = 0$ 时，$y$ 是 $x$ 的一个特定函数，并且可以被视为表示 $y$ 与 $x$ 关系的曲线具有特定形状。 那么 $t$ 值的任何变化都等同于 $x$ 的起始位置的变化。 也就是说，它表示，在函数的形式被保留的情况下，它以均匀的速度沿着 $x$ 方向传播；因此，无论在任何特定时间 $t_0$ 在任何特定点 $x_0$ 处的纵坐标 $y$ 的值是多少，在后续时间 $t_1$ 在更远的点上都会出现相同的 $y$ 值，后者的横坐标为 $x_0 + a(t_1 - t_0)$。 在这种情况下，简化的方程表示波（任何形式）以均匀的速度沿着 $x$ 方向传播。
+
+<p>如果微分方程写成
+\[
+m \frac{d^2y}{dt^2} = k\, \frac{d^2y}{dx^2},
+\]
+则解是相同的，但传播速度的值为
+\[
+a = \sqrt{\frac{k}{m}}.
+\]
+
+<p><hr>
+
+<p>你现在已经被亲自引导到魔幻之境的边界。 为了方便随时查阅那些重要的运算结果，在临别之际，作者特意为你准备了一份“通行证”，其形式为便捷的<a href="table.html">标准微积分公式表</a>。 图表中间一栏罗列着最常见的函数；左侧呈现的是它们的微分结果，右侧则是积分结果。愿这份心意，能助你在这片胜境中游刃有余！
+
+<br>
+<hr>
+<a href="epilogue.html">下一页 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

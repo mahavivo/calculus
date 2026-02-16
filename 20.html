@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>技巧、陷阱和成功 | 微积分入门</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 20}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>技巧、陷阱和成功</h1>
+<p class="a rotatedFloralHeartBullet">
+
+<p><em>技巧。</em> 积分工作很大一部分在于将其转化为可积分的形式。 关于积分微积分的书籍——这里指的是严肃的书籍——充满了用于此类工作的计划，方法，技巧和手段。 以下是其中的一些。
+
+<p><em>分部积分。</em><a name="intparts"/> 这个名称是一个技巧的名称，其公式为
+\[
+\int u\, dx = ux - \int x\, du + C.
+\]
+它在一些你无法直接处理的情况下很有用，因为它表明如果找到任何情况下的 $\int x\, du$，那么也可以找到 $\int u\, dx$。 该公式可以推导如下。 从 <a href="6.html#differprod">此处</a>，我们得到
+\[
+d(ux) = u\, dx + x\, du,
+\]
+可以写成
+\[
+u(dx) = d(ux) - x\, du,
+\]
+通过直接积分得出上述表达式。
+
+<p>
+<p><em>示例</em>
+(1) 求 $\int w · \sin w\, dw$。
+
+<p>写成 $u = w$，对于 $\sin w · dw$，写成 $dx$。那么我们有 $du = dw$，而 $\int \sin w · dw = -\cos w = x$。
+
+<p>将这些代入公式，我们得到
+\begin{align*}
+\int w · \sin w\, dw &= w(-\cos w) - \int -\cos w\, dw  \\
+                     &=-w \cos w + \sin w + C.
+\end{align*}
+
+<p>(2) 求 $\int x \epsilon^x\, dx$。
+\begin{align*}
+   \text{写成}\;
+ u &=  x, & \epsilon^x\, dx&=dv; \\
+ \text{那么 }\;
+du &= dx, & v &=\epsilon^x,
+\end{align*}
+
+ 且
+\[
+\int x\epsilon^x\, dx
+   = x\epsilon^x - \int \epsilon^x\, dx
+      \quad \text{（按公式）} \\
+   = x \epsilon^x - \epsilon^x = \epsilon^x(x-1) + C.
+\]
+
+<p>(3) 尝试 $\int \cos^2 \theta\, d\theta$。<a name="moreexamples"/>
+\begin{align*}
+u &= \cos \theta, &\cos \theta\, d\theta &= dv. \\
+   \text{因此 }\;
+du&= -\sin \theta\, d\theta, & v &=\sin \theta,
+\end{align*}
+\begin{align*}
+\int \cos^2 \theta\, d\theta
+  &= \cos \theta \sin \theta+ \int \sin^2 \theta\, d\theta       \\
+  &= \frac{2 \cos\theta \sin\theta}{2} +\int(1-\cos^2 \theta)\, d\theta  \\
+  &= \frac{\sin 2\theta}{2} + \int d\theta - \int \cos^2 \theta\, d\theta.
+\end{align*}
+\begin{align*}
+   \text{因此}\;
+2 \int \cos^2 \theta\, d\theta
+  &= \frac{\sin 2\theta}{2} + \theta \\
+ 且
+\int \cos^2 \theta\, d\theta
+  &= \frac{\sin 2\theta}{4} + \frac{\theta}{2} + C.
+\end{align*}
+
+<p>(4) 求 $\int x^2 \sin x\, dx$。
+
+\begin{align*}
+   \text{写成}\;
+x^2  &= u, & \sin x\, dx &= dv; \\
+ \text{那么 }\;
+du &= 2x\, dx, & v &= -\cos x,
+\end{align*}
+\[
+\int x^2 \sin x\, dx = -x^2 \cos x + 2 \int x \cos x\, dx.
+\]
+
+<p>现在求 $\int x \cos x\, dx$，按部分积分（如上面的示例 1 中）：
+\[
+\int x \cos x\, dx = x \sin x + \cos x+C.
+\]
+
+<p>因此
+\begin{align*}
+\int x^2 \sin x\, dx
+  &= -x^2 \cos x + 2x \sin x + 2 \cos x + C' \\
+  &= 2 \left[ x \sin x + \cos x \left(1 - \frac{x^2}{2}\right) \right] +C'.
+\end{align*}
+
+<p>(5) 求 $\int \sqrt{1-x^2}\, dx$。
+\begin{align*}
+ \text{写成}\;
+u &= \sqrt{1-x^2},\quad dx=dv;  \\
+ \text{那么 }\;
+du &= -\frac{x\, dx}{\sqrt{1-x^2}}\quad \text{(请参阅 } 
+\style{
+  border-bottom-width: 1px; 
+  border-bottom-style: dotted;
+}{\href{9.html}{\text{第九章}}}) 
+\end{align*} 
+且 $x=v$； 因此
+\[
+\int \sqrt{1-x^2}\, dx=x \sqrt{1-x^2} + \int \frac{x^2\, dx}{\sqrt{1-x^2}}.
+\]
+
+<p>这里我们可以用一个小技巧，因为我们可以写成
+\[
+\int \sqrt{1-x^2}\, dx
+  = \int \frac{(1-x^2)\, dx}{\sqrt{1-x^2}}
+  = \int \frac{dx}{\sqrt{1-x^2}} - \int \frac{x^2\, dx}{\sqrt{1-x^2}}.
+\]
+
+<p>将最后两个方程相加，我们消除了
+$\int \dfrac{x^2\, dx}{\sqrt{1-x^2}}$，并且我们有
+\[
+2 \int \sqrt{1-x^2}\, dx = x\sqrt{1-x^2} + \int \frac{dx}{\sqrt{1-x^2}}.
+\]
+
+<p>你还记得遇到 $\dfrac {dx}{\sqrt{1-x^2}}$ 吗？ 它是通过对 $y=\arcsin x$ 进行微分得到的（请参阅<a href="15.html#intex3">此处</a>）；因此它的积分是 $\arcsin x$，因此
+\[
+\int \sqrt{1-x^2}\, dx = \frac{x \sqrt{1-x^2}}{2} + \tfrac{1}{2} \arcsin x +C.
+\]
+
+<p>你现在可以自己尝试一些练习了；你会在本章末尾找到一些练习。
+
+<p><em>替换法。</em> 这与<a href="9.html">第九章</a>中解释的技巧相同。 让我们通过一些例子来说明它在积分中的应用。
+
+<p>(1)
+
+$\int \sqrt{3+x}\, dx$。
+\begin{align*}
+   令
+3+x &= u,\quad dx = du; \\
+ 代换
+\int u^{\frac{1}{2}}\, du
+  &= \tfrac{2}{3} u^{\frac{3}{2}} = \tfrac{2}{3}(3+x)^{\frac{3}{2}}.
+\end{align*}
+
+<p>(2) $\int \dfrac{dx}{\epsilon^x+\epsilon^{-x}}$。
+
+   令
+ \[
+\epsilon^x = u,\quad \frac{du}{dx} = \epsilon^x,\quad\text{且}\quad
+dx = \frac{du}{\epsilon^x}; \\
+\]
+ 使得
+ \[
+\int \frac{dx}{\epsilon^x+\epsilon^{-x}}
+  = \int \frac{du}{\epsilon^x(\epsilon^x+\epsilon^{-x})}
+  = \int \frac{du}{u\left(u + \dfrac{1}{u}\right)}
+  = \int \frac{du}{u^2+1}.
+\]
+
+<p>$\dfrac{du}{1+u^2}$ 是对 $\arctan x$ 进行微分的结果。
+
+<p>因此积分是 $\arctan \epsilon^x$。
+
+<p>(3) $\int \dfrac{dx}{x^2+2x+3} = \int \dfrac{dx}{x^2+2x+1+2} = \int \dfrac{dx}{(x+1)^2+(\sqrt 2)^2}$。
+
+<p>   令 $x+1=u,\quad dx=du$；那么积分变为 $\int \dfrac{du}{u^2+(\sqrt2)^2}$；但是 $\dfrac{du}{u^2+a^2}$ 是对 $u=\dfrac{1}{a} \arctan \dfrac{u}{a}$ 求导的结果。
+
+<p>因此，最终得到 $\dfrac{1}{\sqrt2} \arctan \dfrac{x+1}{\sqrt 2}$ 作为给定积分的值。
+
+<p><em>递推公式</em> 是主要适用于必须积分的二项式和三角表达式的特殊形式，必须将其简化为已知积分的形式。
+
+<p><em>有理化</em>和<em>分母因式分解</em>是适用于特殊情况的技巧，但它们不允许进行任何简短或通用的解释。 需要大量的练习才能熟悉这些准备过程。
+
+<p>以下示例显示了在<a href="13.html#partfracs2">此处</a>第 XIII 章中学习的拆分<a name="partfracs"/>为部分分式的过程如何在积分中得以利用。
+
+<p>再次取 $\int \dfrac{dx}{x^2+2x+3}$；如果我们把 $\dfrac{1}{x^2+2x+3}$ 拆分为部分分式，则得到（请参阅<a href="20.html#partfracs3">此处</a>）：
+\[
+\dfrac{1}{2\sqrt{-2}} \left[\int \dfrac{dx}{x+1-\sqrt{-2}} - \int \dfrac{dx}{x+1+\sqrt{-2}} \right]
+\]
+\[
+=\dfrac{1}{2\sqrt{-2}} \log_\epsilon \dfrac{x+1-\sqrt{-2}}{x+1+\sqrt{-2}}.
+\]
+请注意，相同的积分有时可以用多种方式表达（它们彼此等效）。
+
+<p><em>陷阱。</em> 初学者容易忽略有经验的人会避免的某些点；例如，使用等效于零或无穷大的因子，以及出现诸如 $\tfrac{0}{0}$ 之类的无确定值的量。 没有什么黄金法则可以满足所有可能的情况。 除了实践和细心之外，别无他法。 在<a href="18.html">第 XVIII 章</a>中，当我们遇到积分 $x^{-1}\, dx$ 的问题时，出现了一个必须规避的陷阱。
+
+<p><em>成功。</em> 成功必须理解为微积分已被应用于解决其他棘手的问题。 通常在考虑物理关系时，人们能够建立一个表达式来表示控制零件或控制它们的力量的相互作用的定律，这种表达式自然地以<em>微分方程</em>的形式出现，即包含带有或不带有其他代数量的微分系数的方程。 并且当找到这样的微分方程时，在将其积分之前，将无法获得任何进展。 通常，陈述适当的微分方程比求解它容易得多：——只有当人们想积分时，真正的问题才会开始，除非确实看到该方程具有已知的积分的标准形式，然后成功就会变得很容易。 从微分方程的积分得出的方程被称为其“解”； 并且令人惊讶的是，在许多情况下，解看起来似乎与其作为积分形式的微分方程没有任何关系。 该解通常看起来与原始表达式不同，就像蝴蝶与它的幼虫一样。 谁会认为像
+\[
+\dfrac{dy}{dx} = \dfrac{1}{a^2-x^2}
+\]
+这样无辜的东西会开出
+\[
+y = \dfrac{1}{2a} \log_\epsilon \dfrac{a+x}{a-x} + C?
+\]
+但后者是前者的<em>解</em>。
+
+<p><note>*这意味着求解的实际结果称为其“解”。 但是，许多数学家会与 Forsyth 教授一起说，“当因变量的值通过已知函数或积分（无论后者中的积分是否可以用已知函数表示）表示为自变量的函数时，<em>每个微分方程都被认为是已求解的</em>。”</note>
+
+<p>最后，让我们一起计算上面的结果。
+
+<p>通过部分分式，<a name="partfracs3"/>
+\begin{align*}
+\frac{1}{a^2-x^2} &= \frac{1}{2a(a+x)} + \frac{1}{2a(a-x)},  \\
+dy &= \frac {dx}{2a(a+x)}+ \frac{dx}{2a(a-x)},  \\
+y  &= \frac{1}{2a}
+       \left( \int \frac{dx}{a+x}
+            + \int \frac{dx}{a-x} \right)  \\
+   &= \frac{1}{2a} \left(\log_\epsilon (a+x) - \log_\epsilon (a-x) \right)  \\
+   &= \frac{1}{2a} \log_\epsilon \frac{a+x}{a-x} + C.
+\end{align*}
+
+  不是一个非常困难的变形！
+
+<p>有专门的论述，例如 Boole 的《<em>微分方程</em>》，专门讨论如何为不同的原始形式找到“解”。
+
+<p>
+<hr><h3>练习 XIX</h3>
+
+<p>
+<p>(1) 求 $\int \sqrt {a^2 - x^2}\, dx$。
+<p>(2) 求 $\int x \log_\epsilon x\, dx$。
+<p>(3) 求 $\int x^a \log_\epsilon x\, dx$。
+<p>(4) 求 $\int \epsilon^x \cos \epsilon^x\, dx$。
+<p>(5) 求 $\int \dfrac{1}{x} \cos (\log_\epsilon x)\, dx$。
+<p>(6) 求 $\int x^2 \epsilon^x\, dx$。
+<p>(7) 求 $\int \dfrac{(\log_\epsilon x)^a}{x}\, dx$。
+<p>(8) 求 $\int \dfrac{dx}{x \log_\epsilon x}$。
+<p>(9) 求 $\int \dfrac{5x+1}{x^2 +x-2}\, dx$。
+<p>(10) 求 $\int \dfrac{(x^2 -3)\, dx}{x^3 - 7x+6}$。
+<p>(11) 求 $\int \dfrac{b\, dx}{x^2 -a^2}$。
+<p>(12) 求 $\int \dfrac{4x\, dx}{x^4 -1}$。
+<p>(13) 求 $\int \dfrac{dx}{1-x^4}$。
+<p>(14) 求 $\int \dfrac{dx}{x \sqrt {a-bx^2}}$。
+
+<p><h3 class="answers">答案</h3>
+
+<p>(1)  $\dfrac{x\sqrt{a^2 - x^2}}{2} + \dfrac{a^2}{2} \sin^{-1} \dfrac{x}{a} + C$。
+
+<p>(2)  $\dfrac{x^2}{2}(\log_\epsilon x - \tfrac{1}{2}) + C$。
+
+<p>(3)  $\dfrac{x^{a+1}}{a + 1} \left(\log_\epsilon x - \dfrac{1}{a + 1}\right) + C$。
+
+<p>(4)  $\sin \epsilon^x + C$。
+
+<p>(5)  $\sin(\log_\epsilon x) + C$。
+
+<p>(6)  $\epsilon^x (x^2 - 2x + 2) + C$。
+
+<p>(7)  $\dfrac{1}{a + 1} (\log_\epsilon x)^{a+1} + C$。
+
+<p>(8)  $\log_\epsilon(\log_\epsilon x) + C$。
+
+<p>(9)  $2\log_\epsilon(x - 1) + 3\log_\epsilon(x + 2) + C$。
+
+<p>(10)  $\frac{1}{2} \log_\epsilon(x - 1) + \frac{1}{5} \log_\epsilon(x - 2) + \frac{3}{10} \log_\epsilon(x + 3) + C$。
+
+<p>(11)  $\dfrac{b}{2a} \log_\epsilon \dfrac{x - a}{x + a} + C$。
+
+<p>(12)  $\log_\epsilon \dfrac{x^2 - 1}{x^2 + 1} + C$。
+
+<p>(13)  $\frac{1}{4} \log_\epsilon \dfrac{1 + x}{1 - x} + \frac{1}{2} \arctan x + C$。
+
+<p>(14)  $\dfrac{1}{\sqrt{a}} \log_\epsilon \dfrac{\sqrt{a} - \sqrt{a - bx^2}}{x\sqrt{a}}$。（令 $\dfrac{1}{x} = v$；那么，在结果中，令 $\sqrt{v^2 - \dfrac{b}{a}} = v - u$。）
+<br>
+<hr>
+<a href="21.html">下一页 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

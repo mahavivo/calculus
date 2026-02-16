@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>积分 | 微积分入门</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 17}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>积分</h1>
+<p class="a rotatedFloralHeartBullet">
+
+<p>这个伟大的秘密已经揭晓，这个神秘的符号 $\int$（毕竟它只是一个长的 $S$），仅仅意味着“的总和”或“所有此类量的总和”。 因此，它类似于另一个符号 $\sum$（希腊字母<em>Sigma</em>），它也是一个求和符号。 然而，在数学人员关于这些符号的用法上存在以下差异：虽然 $\sum$ 通常用于表示有限数量的总和，但积分符号 $\int$ 通常用于表示大量的无限小量的总和，实际上只是构成所需总和的元素。因此 $\int dy = y$，并且 $\int dx = x$。
+
+<p>任何人都可能理解任何事物的整体是如何被设想成由许多小块组成的； 而且这些块越小，它们的数量就越多。 因此，一条长一英寸的线可以被认为是 $10$ 个长 $\frac{1}{10}$ 英寸的片段组成的；或者由 $100$ 个部分组成，每个部分长 $\frac{1}{100}$ 英寸；或者由 $1,000,000$ 个部分组成，其中每个部分长 $\frac{1}{1,000,000}$ 英寸； 或者，将思想推到可理解的极限，它可以被认为是无穷多个元素的组合，其中每个元素都无限小。
+
+<p>是的，你会说，但那样想有什么用呢？ 为什么不直接将它看作一个整体呢？ 简单的原因是，在大量情况下，如果不计算许多小部分的总和，就无法计算出整体的大小。 “<em>积分</em>”的过程使我们能够计算出原本我们无法直接估计的总数。
+
+<p>让我们首先举一两个简单的例子，使自己熟悉这种总结许多单独部分的概念。
+
+<p>考虑以下级数：
+\[
+1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8}
+  + \tfrac{1}{16} + \tfrac{1}{32} + \tfrac{1}{64} + \text{等等}
+\]
+
+<p>这里的级数的每一项是通过取前一项值的一半来形成的。 如果我们可以持续到无限多个项，则总和的值是多少？ 每个小学生都知道答案是 $2$。 如果你喜欢，可以把它想象成一条线。 从一英寸开始；加上半英寸，加上四分之一英寸；加上八分之一英寸；等等。 如果我们在操作的任何一点停止，仍然会有一块无法构成整个 $2$ 英寸； 并且缺少的部分将始终与最后添加的部分大小相同。 因此，如果在将 $1$、$\frac{1}{2}$ 和 $\frac{1}{4}$ 放在一起之后停止，则将缺少 $\frac{1}{4}$。 如果我们继续到加上 $\frac{1}{64}$，仍然会缺少 $\frac{1}{64}$。 所需的剩余量将始终等于最后添加的项。 只有通过无限次操作，我们才能达到实际的 $2$ 英寸。 实际上，当我们得到如此小的部分，以至于无法绘制它们时，我们就会达到它——那大约是在 $10$ 项之后，因为第十一项是 $\frac{1}{1024}$。如果我们想要深入到即使惠特沃思测量机也无法检测到的程度，我们只需要计算到大约 $20$ 项。 显微镜甚至不会显示第 $18$ 项！ 因此，无限次操作毕竟不是什么可怕的事情。 <em>积分</em>只是全部。 但是，正如我们将看到的，在某些情况下，积分微积分使我们能够获得作为无限次操作的结果而存在的<em>确切</em>总数。 在这种情况下，积分微积分为我们提供了一种<em>快速</em>而简单的方法来获得结果，否则将需要大量无休止的复杂计算。 因此，我们最好不要浪费时间学习<em>如何积分</em>。
+
+<a name="figure46">
+<p><img src="33283-t/images/195a.pdf.png-1.png">
+
+<p><h2>曲线的斜率和曲线本身</h2>
+
+<p>让我们对曲线的斜率做一个初步的调查。 因为我们已经看到，对曲线求导意味着找到其斜率（或其不同点处的斜率）的表达式。 如果为我们规定了斜率（或斜率），我们能否执行反向的重建整个曲线的过程？
+
+<p>回到<a href="10.html#Case2">此处</a>的案例 (2)。 在这里，我们有最简单的曲线，一条斜线的方程是
+\[
+y = ax+b.
+\]
+<p><a name="figure47">
+<p><img src="33283-t/images/197a.pdf.png-1.png">
+
+<p>我们知道这里 $b$ 代表 $x= 0$ 时 $y$ 的初始高度，而 $a$ 与 $\dfrac{dy}{dx}$ 相同，是直线的“斜率”。 直线具有恒定的斜率。 沿着它，基本三角形
+<p><a name="figure197b">
+<p><img src="33283-t/images/197b.pdf.png-1.png">
+<p>的高度和底部之间具有相同的比例。 假设我们取有限大小的 $dx$ 和 $dy$，使得 $10$ 个 $dx$ 构成一英寸，那么就会有十个像这样的三角形
+
+<p>
+<a name="figure198a">
+<p><img src="33283-t/images/198a.pdf.png-1.png">
+
+<p>现在，假设我们被命令仅从 $\dfrac{dy}{dx} = a$ 的信息开始重建“曲线”。 我们能做什么？ 仍然将小 $d$ 的大小视为有限，我们可以绘制 10 个，它们都具有相同的斜率，然后将它们首尾相连地放在一起，像这样：
+<p><a name="figure48">
+<p><img src="33283-t/images/198b.pdf.png-1.png">
+<p>
+并且，由于所有斜率都相同，它们将连接起来，就像<a href="#figure48">图 48</a>中一样，形成一条斜率为 $\dfrac{dy}{dx} = a$ 的斜线。 并且无论我们将 $dy$ 和 $dx$ 视为有限的还是无限小的，由于它们都相同，如果我们认为 $y$ 是所有 $dy$ 的总和，而 $x$ 是所有 $dx$ 的总和，则很明显 $\dfrac{y}{x} = a$。 但是，我们应该把这条斜线放在哪里？ 我们是从原点 $O$ 开始，还是从更高的位置开始？ 由于我们唯一的已知信息是斜率，因此我们没有关于原点之上特定高度的任何说明； 事实上，初始高度是不确定的。 无论初始高度如何，斜率都将相同。 因此，让我们试着猜测一下可能需要什么，并将斜线从 $O$ 上方 $C$ 的高度开始。 也就是说，我们有方程
+\[
+y = ax + C.
+\]
+
+<p>现在很明显，<a name="constant"/>在这种情况下，添加的常数意味着当 $x = 0$ 时 $y$ 所具有的特定值。
+
+<p>现在让我们来看一个更困难的例子，一条线的斜率不是常数，而是变得越来越大。 让我们假设，当 $x$ 增大时，向上斜率的增大程度也越大。 用符号表示，它是：
+\[
+\frac{dy}{dx} = ax.
+\]
+或者，为了给出一个具体的例子，取 $a = \frac{1}{5}$，因此
+\[
+\frac{dy}{dx} = \tfrac{1}{5} x.
+\]
+
+<p>那么我们最好从计算一些不同 $x$ 值处的斜率值开始，并绘制它们的小图。
+
+当
+<table>
+  <tr><td>$x =0$</td><td>$ \frac{dy}{dx} = 0,   $</td><td><a name="figure200a1">
+<p><img src="33283-t/images/200a1.pdf.png-1.png"></td></tr>
+<tr><td>$x =1$</td><td>$ \frac{dy}{dx} = 0.2, $</td><td><a name="figure200a2">
+<p><img src="33283-t/images/200a2.pdf.png-1.png"></td></tr>
+<tr><td>$x =2$</td><td>$ \frac{dy}{dx} = 0.4, $</td><td><a name="figure200a3">
+<p><img src="33283-t/images/200a3.pdf.png-1.png"></td></tr>
+<tr><td>$x =3$</td><td>$ \frac{dy}{dx} = 0.6, $</td><td><a name="figure200a4">
+<p><img src="33283-t/images/200a4.pdf.png-1.png"></td></tr>
+<tr><td>$x =4$</td><td>$ \frac{dy}{dx} = 0.8, $</td><td><a name="figure200a5">
+<p><img src="33283-t/images/200a5.pdf.png-1.png"></td></tr>
+<tr><td>$x =5$</td><td>$ \frac{dy}{dx} = 1.0. $</td><td><a name="figure200a6">
+<p><img src="33283-t/images/200a6.pdf.png-1.png"></td></tr>
+</table>
+
+<p>现在尝试将这些部分放在一起，将每个部分都设置成使其底部的中间距离都在右侧合适的距离上，并且它们在拐角处连接在一起；因此（<a href="#figure49">图 49</a>）。 当然，结果不是一条光滑的曲线：但它是对一条曲线的近似。 如果我们采用一半长度且数量是两倍的位，例如<a href="#figure50">图 50</a>，我们将获得更好的近似值。 但是，
+
+对于完美的曲线，我们应该将每个 $dx$ 及其对应的 $dy$ 都取得无限小和无限多。
+
+<a name="figure49">
+<p><img src="33283-t/images/200b.pdf.png-1.png">
+
+<a name="figure50">
+<p><img src="33283-t/images/201a.pdf.png-1.png">
+<p>那么，任何 $y$ 值应该有多大？ 显然，在曲线上的任意一点 $P$，$y$ 的值将是从 $0$ 到该水平的所有小 $dy$ 的总和，也就是说，$\int dy = y$。 并且由于每个 $dy$ 等于 $\frac{1}{5}x · dx$，因此整个 $y$ 将等于所有诸如 $\frac{1}{5}x · dx$ 的部分的和，或者，正如我们应该写的那样，$\int \tfrac{1}{5}x · dx$。
+
+<p>现在，如果 $x$ 是常数，$\int \tfrac{1}{5}x · dx$ 将与 $\frac{1}{5} x \int dx$ 相同，或 $\frac{1}{5}x^2$。 但是 $x$ 最初是 $0$，并且增加到点 $P$ 处的特定值 $x$，因此它从 $0$ 到该点的平均值为 $\frac{1}{2}x$。 因此 $\int \tfrac{1}{5} x\, dx = \tfrac{1}{10} x^2$； 或 $y=\frac{1}{10}x^2$。
+
+<p>但是，与上一个例子一样，这需要添加一个不确定的常数 $C$，因为我们没有被告知当 $x = 0$ 时，曲线将从原点以上多高的高度开始。 因此，我们将<a href="#figure51">图 51</a>中绘制的曲线方程写为
+\[
+y = \tfrac{1}{10}x^2 + C.
+\]
+<a name="figure51">
+<p><img src="33283-t/images/202a.pdf.png-1.png">
+
+<p>
+<hr><h3>练习 XVI</h3>
+
+(1) 求 $\frac{2}{3} + \frac{1}{3} + \frac{1}{6} + \frac{1}{12} + \frac{1}{24} + \text{等等}$ 的最终和。
+
+<p>(2) 证明级数 $1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \frac{1}{6} + \frac{1}{7}$ 等是收敛的，并求其前 8 项的和。
+
+<p>(3) 如果 $\log_\epsilon(1+x) = x - \dfrac{x^2}{2} + \dfrac{x^3}{3} - \dfrac{x^4}{4} + \text{等等}$，则求 $\log_\epsilon 1.3$。
+
+<p>(4) 按照本章中解释的类似推理，求 $y$，
+\[
+(a) \text{如果}\; \frac{dy}{dx} = \tfrac{1}{4} x;&nbsp;&nbsp;
+(b) \text{如果}\; \frac{dy}{dx} = \cos x.
+\]
+
+<p>(5) 如果 $\dfrac{dy}{dx} = 2x + 3$，则求 $y$。
+
+<p><h3 class="answers">答案</h3>
+<p>(1)   $1\frac{1}{3}$。
+
+<p>(2)   $0.6344$。
+
+<p>(3)   $0.2624$。
+
+<p>(4)   (<em>a</em> ) $y = \frac{1}{8} x^2 + C$；&nbsp;&nbsp;
+     (<em>b</em> ) $y = \sin x + C$。
+
+<p>(5)   $y = x^2 + 3x + C$。
+<br>
+<hr>
+<a href="18.html">下一页 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

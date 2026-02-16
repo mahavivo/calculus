@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>最简单的情况 | 微积分入门</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 4}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>最简单的情况</h1>
+<p class="a rotatedFloralHeartBullet">
+
+
+<p>现在让我们看看，从第一性原理出发，如何对一些简单的代数表达式进行微分。
+
+<p><h3>情况1</h3>
+让我们从简单的表达式 $y=x^2$ 开始。现在请记住，关于微积分的基本概念是<em>增长</em>的概念。数学家称之为<em>变化</em>。现在，由于 $y$ 和 $x^2$ 彼此相等，很明显，如果 $x$ 增长，$x^2$ 也会增长。如果 $x^2$ 增长，那么 $y$ 也会增长。我们要找出的是 $y$ 的增长与 $x$ 的增长之间的比例。换句话说，我们的任务是找出 $dy$ 和 $dx$ 之间的比率，或者简而言之，找出 $\dfrac{dy}{dx}$ 的值。
+
+<p>那么，让 $x$ 稍微增大一点，变成 $x + dx$；同样，$y$ 也会稍微增大一点，变成 $y + dy$。那么，很明显，扩大的 $y$ 仍然会等于扩大的 $x$ 的平方。写下来，我们有：
+\begin{align*}
+y + dy &= (x + dx)^2.\\
+\text{展开平方得到：}\;\\
+y + dy &= x^2 + 2x · dx+(dx)^2.
+\end{align*}
+
+
+<p>$(dx)^2$ 是什么意思？记住，$dx$ 表示 $x$ 的一小部分，一点点。那么 $(dx)^2$ 将表示 $x$ 的一点点的一点点；也就是说，如上文 (<a href="2.html#smallness">此处</a>) 所解释的，它是一个二阶小量。因此，与其他项相比，它可以被视为完全可以忽略不计。省略它，我们得到：<a name="diffexample"/>
+\begin{align*}
+y + dy &= x^2 + 2x · dx.  \\
+\text{现在 $y=x^2$；所以让我们从等式中减去它，剩下}\;\\
+dy &= 2x · dx.  \\
+\text{两边除以 $dx$，我们得到}\;\\
+\frac{dy}{dx} &= 2x.
+\end{align*}
+
+<p>现在<em>这</em>*
+就是我们想要找到的。 在我们目前的情况下，发现 $y$ 的增长与 $x$ 的增长之比为 $2x$。
+<p><note>*<em>注</em>–这个比率 $\dfrac{dy}{dx}$ 是将 $y$ 对 $x$ 进行微分的结果。微分意味着找到微分系数。假设我们有 $x$ 的其他一些函数，例如 $u = 7x^2 + 3$。那么，如果我们被告知对此函数关于 $x$ 进行微分，我们应该找出 $\dfrac{du}{dx}$，或者，同样的事情，$\dfrac{d(7x^2 + 3)}{dx}$。另一方面，我们可能有一个时间是自变量的情况（参见 <a href="3.html#indvar">此处</a>），例如：$y = b + \frac{1}{2} at^2$。那么，如果我们被告知对其进行微分，这意味着我们必须找出它关于 $t$ 的微分系数。因此，我们的工作是尝试找出 $\dfrac{dy}{dt}$，也就是找出 $\dfrac{d(b + \frac{1}{2} at^2)}{dt}$。</note>
+
+<p>
+<em>数值示例。</em><p>
+假设 $x=100$，因此 $y=10,000$。然后让 $x$ 增长到 $101$ (即让 $dx=1$)。那么，扩大的 $y$ 将是 $101 × 101 = 10,201$。但是，如果我们同意我们可以忽略二阶小量，那么与 $10,000$ 相比，$1$ 可以被忽略；所以我们可以将扩大的 $y$ 舍入为 $10,200$。$y$ 从 $10,000$ 增长到 $10,200$；增加的部分是 $dy$，因此是 $200$。
+
+<p>$\dfrac{dy}{dx} = \dfrac{200}{1} = 200$。根据上一段的代数运算，我们发现 $\dfrac{dy}{dx} = 2x$。的确如此；因为 $x=100$，$2x=200$。
+
+<p>但是，你会说，我们忽略了一个完整的单位。
+
+<p>好吧，再试一次，使 $dx$ 更小一点。
+
+<p>尝试 $dx=\frac{1}{10}$。那么 $x+dx=100.1$，并且
+\[
+(x+dx)^2 = 100.1 × 100.1 = 10,020.01.
+\]
+
+<p>现在最后一位数字 $1$ 只是 $10,000$ 的百万分之一，完全可以忽略不计；所以我们可以取 $10,020$，而不带末尾的小数。这使得 $dy=20$；并且 $\dfrac{dy}{dx} = \dfrac{20}{0.1} = 200$，这仍然与 $2x$ 相同。
+
+<p>
+<h3>情况2</h3>
+尝试用相同的方式微分 $y = x^3$。
+
+<p>我们让 $y$ 增长到 $y+dy$，而 $x$ 增长到 $x+dx$。
+
+<p>那么我们有
+\[
+y + dy = (x + dx)^3.
+\]
+
+
+<p>展开立方，我们得到
+\[
+y + dy = x^3 + 3x^2 · dx + 3x(dx)^2+(dx)^3.
+\]
+
+<p>现在我们知道，我们可以忽略二阶和三阶小量；因为，当 $dy$ 和 $dx$ 都变得无限小时，$(dx)^2$ 和 $(dx)^3$ 将相比之下变得无限小。因此，将它们视为可以忽略不计，我们剩下：
+\[
+y + dy=x^3+3x^2 · dx.
+\]
+
+<p>但是 $y=x^3$；减去这个，我们有：
+\begin{align*}
+dy &= 3x^2 · dx, \\
+\text{ 并且}\;
+\frac{dy}{dx} &= 3x^2.
+\end{align*}
+
+<h3>情况3</h3>
+尝试微分 $y=x^4$。像之前一样，先让 $y$ 和 $x$ 都增长一点，我们有：
+\begin{align*}
+y + dy &= (x+dx)^4.  \\
+\end{align*}
+计算出四次方的结果，我们得到
+\begin{align*}
+y + dy &= x^4 + 4x^3\, dx + 6x^2(dx)^2 + 4x(dx)^3+(dx)^4.  \\
+\end{align*}
+然后删除包含 $dx$ 所有较高次幂的项，因为它们相比之下可以忽略不计，我们有
+\begin{align*}
+y + dy &= x^4+4x^3\, dx.  \\
+\end{align*}
+
+减去原始的 $y=x^4$，我们剩下
+\begin{align*}
+dy &= 4x^3\, dx, \\
+\text{ 并且}\;
+\frac{dy}{dx} &= 4x^3.
+\end{align*}
+
+<p><hr>
+
+
+<p>现在，所有这些情况都很容易。让我们收集结果，看看是否可以推断出任何一般规则。将它们放在两列中，一列是 $y$ 的值，另一列是找到的 $\dfrac{dy}{dx}$ 的对应值：如下所示
+<table>
+  <tr><th>$y$</th><th>$\frac{dy}{dx}$</th></tr>
+  <tr><td>$x^2$</td><td>$2x$</td></tr>
+  <tr><td>$x^3$</td><td>$3x^2$</td></tr>
+  <tr><td>$x^4$</td><td>$4x^3$</td></tr>
+</table>
+
+
+<p><a name="diffrule1"/>
+看看这些结果：微分运算似乎已经产生了将 $x$ 的幂减去 $1$ 的效果（例如，在最后一种情况中，将 $x^4$ 减小为 $x^3$），同时乘以一个数字（实际上是最初作为幂出现的相同数字）。现在，一旦你看到这一点，你就可以很容易地推测出其他情况会如何运行。你会期望微分 $x^5$ 会给出 $5x^4$，或者微分 $x^6$ 会给出 $6x^5$。如果你犹豫不决，请尝试其中一种，看看这个推测是否正确。
+
+<p>尝试 $y = x^5$。
+\begin{align*}
+\text{   那么}\;
+y+dy &= (x+dx)^5     \\
+     &= x^5 + 5x^4\, dx + 10x^3(dx)^2  + 10x^2(dx)^3 \\
+     &\phantom{{}= x^5 + 5x^4\, dx} + 5x(dx)^4 + (dx)^5.
+\end{align*}
+
+<p>忽略所有包含较高阶小量的项，我们剩下
+\begin{align*}
+y + dy &= x^5 + 5x^4\, dx,  \\
+
+\text{  减去}\;
+y &= x^5 \text{ 剩下} \\
+dy &= 5x^4\, dx,  \\
+ \text{因此}\;
+\frac{dy}{dx} &= 5x^4, \text{ 正如我们假设的那样。}
+\end{align*}
+
+<p><hr>
+
+<p>按照逻辑推演，我们应该得出结论，如果我们想处理任何更高的幂，–称之为 $n$–我们可以用相同的方式处理它。
+<p>设 $y = x^n,$ <p>那么，我们应该期望找到 <p>
+<p>$\frac{dy}{dx} = nx^{(n-1)}$.
+
+<p>例如，设 $n=8$，则 $y=x^8$；对其进行微分将得到 $\dfrac{dy}{dx} = 8x^7$。
+
+<p>而且，微分 $x^n$ 得到结果 $nx^{n-1}$ 的规则对于 $n$ 为正整数的所有情况都是正确的。[使用二项式定理展开 $(x + dx)^n$ 将立即显示这一点。]但是，它对于 $n$ 具有负值或分数值的情况是否正确，则需要进一步考虑。
+
+<p>
+<em>负幂的情况。</em><p>
+设 $y = x^{-2}$。然后像之前一样进行：
+\begin{align*}
+y+dy &= (x+dx)^{-2} \\
+     &= x^{-2} \left(1 + \frac{dx}{x}\right)^{-2}.
+\end{align*}
+
+使用二项式定理展开它（参见 <a href="14.html#binomtheo">此处</a>），
+我们得到
+\begin{align*}
+&=x^{-2} \left[1 - \frac{2\, dx}{x} +
+    \frac{2(2+1)}{1×2} \left(\frac{dx}{x}\right)^2 -
+    \text{等等}\right]  \\
+&=x^{-2} - 2x^{-3} · dx + 3x^{-4}(dx)^2 - 4x^{-5}(dx)^3 + \text{等等} \\
+\end{align*}
+
+
+  因此，忽略较高阶小量，我们有：
+\begin{align*}
+
+       y + dy &= x^{-2} - 2x^{-3} · dx.
+\end{align*}
+
+减去原始的 $y = x^{-2}$，我们发现
+\begin{align*}
+
+           dy &= -2x^{-3}dx,   \\
+\frac{dy}{dx} &= -2x^{-3}.
+\end{align*}
+这仍然符合上面推断的规则。
+
+<p>
+<em>分幂的情况。</em><p>
+设 $y= x^{\frac{1}{2}}$。然后，像之前一样，
+
+
+\begin{align*}
+y+dy &= (x+dx)^{\frac{1}{2}} = x^{\frac{1}{2}} (1 + \frac{dx}{x} )^{\frac{1}{2}} \\
+
+
+     &= \sqrt{x} + \frac{1}{2} \frac{dx}{\sqrt{x}} - \frac{1}{8}
+        \frac{(dx)^2}{x\sqrt{x}} + \text{包含 $dx$ 的更高次幂的项。}
+\end{align*}
+
+<p>减去原始的 $y = x^{\frac{1}{2}}$，并忽略更高次幂，我们剩下：
+\[
+dy = \frac{1}{2} \frac{dx}{\sqrt{x}} = \frac{1}{2} x^{-\frac{1}{2}} · dx,
+\]
+和 $\dfrac{dy}{dx} = \dfrac{1}{2} x^{-\frac{1}{2}}$。与一般规则一致。
+
+
+<p><em>总结。</em>让我们看看我们已经取得了多大的进展。我们得出了以下规则：<a name="multipow"/> 要对 $x^n$ 进行微分，乘以幂并将幂减一，从而得到 $nx^{n-1}$ 作为结果。
+
+<p>
+<a name="ex1"/>
+<hr><h3>练习 I</h3>
+
+<p>微分以下各项：
+
+<p>(1) $y = x^{13}$
+<p>(2) $y = x^{-\frac{3}{2}}$
+<p>(3) $y = x^{2a}$
+<p>(4) $u = t^{2.4}$
+<p>(5) $z = \sqrt[3]{u}$
+<p>(6) $y = \sqrt[3]{x^{-5}}$
+<p>(7) $u = \sqrt[5]{\dfrac{1}{x^8}}$
+<p>(8) $y = 2x^a$
+<p>(9) $y = \sqrt[q]{x^3}$
+<p>(10) $y = \sqrt[n]{\dfrac{1}{x^m}}$
+
+
+<p><em>你现在已经学会了如何微分 $x$ 的幂。多么容易啊！</em>
+
+<h3 class="answers">答案</h3>
+<p>(1)   $\dfrac{dy}{dx} = 13x^{12}$.
+<p>(2)   $\dfrac{dy}{dx} = - \dfrac{3}{2} x^{-\frac{5}{2}}$.
+<p>(3)   $\dfrac{dy}{dx} = 2ax^{(2a-1)}$.
+<p>(4)   $\dfrac{du}{dt} = 2.4t^{1.4}$.
+<p>(5)   $\dfrac{dz}{du} = \dfrac{1}{3} u^{-\frac{2}{3}}$.
+<p>(6)   $\dfrac{dy}{dx} = -\dfrac{5}{3}x^{-\frac{8}{3}}$.
+<p>(7)   $\dfrac{du}{dx} = -\dfrac{8}{5}x^{-\frac{13}{5}}$.
+<p>(8)   $\dfrac{dy}{dx} = 2ax^{a-1}$.
+<p>(9)   $\dfrac{dy}{dx} = \dfrac{3}{q} x^{\frac{3-q}{q}}$.
+<p>(10)   $\dfrac{dy}{dx} = -\dfrac{m}{n} x^{-\frac{m+n}{n}}$.
+<br>
+<hr>
+<a href="5.html">下一个 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>
